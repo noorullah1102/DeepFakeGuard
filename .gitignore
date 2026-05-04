@@ -29,3 +29,12 @@ Thumbs.db
 
 # Uploads (if any temp files)
 uploads/
+
+# Test media (binary files — not for git)
+images/
+*.mp3
+*.wav
+*.jpg
+*.jpeg
+*.png
+*.Zone.Identifier
