@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # DeepFakeGuard
 
 **AI-Powered Deepfake Detection Toolkit** — Detect AI-generated voices and manipulated images via a REST API, get plain-English threat explanations powered by Claude, and verify media provenance with C2PA Content Credentials.
@@ -9,6 +10,28 @@
 
 ---
 
+=======
+---
+title: DeepFakeGuard
+emoji: 🛡️
+colorFrom: blue
+colorTo: purple
+sdk: docker
+pinned: false
+---
+
+# DeepFakeGuard
+
+**AI-Powered Deepfake Detection Toolkit** — Detect AI-generated voices and manipulated images via a REST API, get plain-English threat explanations powered by Claude, and verify media provenance with C2PA Content Credentials.
+
+![Python 3.12](https://img.shields.io/badge/python-3.12-blue)
+![FastAPI](https://img.shields.io/badge/FastAPI-0.136-green)
+![PyTorch](https://img.shields.io/badge/PyTorch-2.x-orange)
+![License](https://img.shields.io/badge/license-MIT-lightgrey)
+
+---
+
+>>>>>>> a869ab1 (Initial commit)
 ## Features
 
 - **Voice Deepfake Detection** — Upload audio, get a real/synthetic verdict with confidence. Uses Wav2Vec2-Large-XLSR (300M params, 53 languages) trained on modern TTS engines (ElevenLabs, Amazon Polly, Kokoro, Speechify).
