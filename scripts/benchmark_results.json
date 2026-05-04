@@ -1,0 +1,3234 @@
+{
+  "dataset": "itsLeen/deepfake_vs_real_image_detection",
+  "samples": {
+    "real": 100,
+    "fake": 100
+  },
+  "full_pipeline": {
+    "accuracy": 0.555,
+    "precision": 0.5462,
+    "recall": 0.65,
+    "f1": 0.5936,
+    "confusion_matrix": [
+      [
+        46,
+        54
+      ],
+      [
+        35,
+        65
+      ]
+    ],
+    "avg_confidence": 0.6098
+  },
+  "communityforensics_vit": {
+    "accuracy": 0.465,
+    "f1": 0.4623
+  },
+  "prithivmlmods_siglip": {
+    "accuracy": 0.51,
+    "f1": 0.3636
+  },
+  "per_image_details": [
+    {
+      "source": "real_0000",
+      "label": "real",
+      "predicted": "manipulated",
+      "confidence": 0.69,
+      "severity": "medium",
+      "correct": false,
+      "communityforensics": {
+        "fake_prob": 0.48114848136901855,
+        "verdict": "real"
+      },
+      "prithivmlmods": {
+        "fake_prob": 0.31130990386009216,
+        "verdict": "real"
+      }
+    },
+    {
+      "source": "real_0001",
+      "label": "real",
+      "predicted": "real",
+      "confidence": 0.62,
+      "severity": "medium",
+      "correct": true,
+      "communityforensics": {
+        "fake_prob": 0.42774200439453125,
+        "verdict": "real"
+      },
+      "prithivmlmods": {
+        "fake_prob": 0.4359557628631592,
+        "verdict": "real"
+      }
+    },
+    {
+      "source": "real_0002",
+      "label": "real",
+      "predicted": "manipulated",
+      "confidence": 0.58,
+      "severity": "medium",
+      "correct": false,
+      "communityforensics": {
+        "fake_prob": 0.7811062932014465,
+        "verdict": "manipulated"
+      },
+      "prithivmlmods": {
+        "fake_prob": 0.6504352688789368,
+        "verdict": "manipulated"
+      }
+    },
+    {
+      "source": "real_0003",
+      "label": "real",
+      "predicted": "real",
+      "confidence": 0.66,
+      "severity": "medium",
+      "correct": true,
+      "communityforensics": {
+        "fake_prob": 0.4095715582370758,
+        "verdict": "real"
+      },
+      "prithivmlmods": {
+        "fake_prob": 0.337617963552475,
+        "verdict": "real"
+      }
+    },
+    {
+      "source": "real_0004",
+      "label": "real",
+      "predicted": "real",
+      "confidence": 0.71,
+      "severity": "medium",
+      "correct": true,
+      "communityforensics": {
+        "fake_prob": 0.32484719157218933,
+        "verdict": "real"
+      },
+      "prithivmlmods": {
+        "fake_prob": 0.2975267469882965,
+        "verdict": "real"
+      }
+    },
+    {
+      "source": "real_0005",
+      "label": "real",
+      "predicted": "manipulated",
+      "confidence": 0.48,
+      "severity": "medium",
+      "correct": false,
+      "communityforensics": {
+        "fake_prob": 0.49570798873901367,
+        "verdict": "real"
+      },
+      "prithivmlmods": {
+        "fake_prob": 0.6735211610794067,
+        "verdict": "manipulated"
+      }
+    },
+    {
+      "source": "real_0006",
+      "label": "real",
+      "predicted": "manipulated",
+      "confidence": 0.47,
+      "severity": "medium",
+      "correct": false,
+      "communityforensics": {
+        "fake_prob": 0.5545623302459717,
+        "verdict": "manipulated"
+      },
+      "prithivmlmods": {
+        "fake_prob": 0.5704481601715088,
+        "verdict": "manipulated"
+      }
+    },
+    {
+      "source": "real_0007",
+      "label": "real",
+      "predicted": "real",
+      "confidence": 0.65,
+      "severity": "medium",
+      "correct": true,
+      "communityforensics": {
+        "fake_prob": 0.34725409746170044,
+        "verdict": "real"
+      },
+      "prithivmlmods": {
+        "fake_prob": 0.4242371618747711,
+        "verdict": "real"
+      }
+    },
+    {
+      "source": "real_0008",
+      "label": "real",
+      "predicted": "manipulated",
+      "confidence": 0.44,
+      "severity": "medium",
+      "correct": false,
+      "communityforensics": {
+        "fake_prob": 0.4846593141555786,
+        "verdict": "real"
+      },
+      "prithivmlmods": {
+        "fake_prob": 0.5521804094314575,
+        "verdict": "manipulated"
+      }
+    },
+    {
+      "source": "real_0009",
+      "label": "real",
+      "predicted": "manipulated",
+      "confidence": 0.45,
+      "severity": "medium",
+      "correct": false,
+      "communityforensics": {
+        "fake_prob": 0.39157867431640625,
+        "verdict": "real"
+      },
+      "prithivmlmods": {
+        "fake_prob": 0.6728150844573975,
+        "verdict": "manipulated"
+      }
+    },
+    {
+      "source": "real_0010",
+      "label": "real",
+      "predicted": "manipulated",
+      "confidence": 0.43,
+      "severity": "medium",
+      "correct": false,
+      "communityforensics": {
+        "fake_prob": 0.714579701423645,
+        "verdict": "manipulated"
+      },
+      "prithivmlmods": {
+        "fake_prob": 0.0747121050953865,
+        "verdict": "real"
+      }
+    },
+    {
+      "source": "real_0011",
+      "label": "real",
+      "predicted": "manipulated",
+      "confidence": 0.69,
+      "severity": "medium",
+      "correct": false,
+      "communityforensics": {
+        "fake_prob": 0.42838817834854126,
+        "verdict": "real"
+      },
+      "prithivmlmods": {
+        "fake_prob": 0.3721992075443268,
+        "verdict": "real"
+      }
+    },
+    {
+      "source": "real_0012",
+      "label": "real",
+      "predicted": "real",
+      "confidence": 0.6,
+      "severity": "medium",
+      "correct": true,
+      "communityforensics": {
+        "fake_prob": 0.6657325029373169,
+        "verdict": "manipulated"
+      },
+      "prithivmlmods": {
+        "fake_prob": 0.14995001256465912,
+        "verdict": "real"
+      }
+    },
+    {
+      "source": "real_0013",
+      "label": "real",
+      "predicted": "real",
+      "confidence": 0.58,
+      "severity": "medium",
+      "correct": true,
+      "communityforensics": {
+        "fake_prob": 0.7099604606628418,
+        "verdict": "manipulated"
+      },
+      "prithivmlmods": {
+        "fake_prob": 0.1448223739862442,
+        "verdict": "real"
+      }
+    },
+    {
+      "source": "real_0014",
+      "label": "real",
+      "predicted": "manipulated",
+      "confidence": 0.53,
+      "severity": "medium",
+      "correct": false,
+      "communityforensics": {
+        "fake_prob": 0.5349739193916321,
+        "verdict": "manipulated"
+      },
+      "prithivmlmods": {
+        "fake_prob": 0.7613816857337952,
+        "verdict": "manipulated"
+      }
+    },
+    {
+      "source": "real_0015",
+      "label": "real",
+      "predicted": "manipulated",
+      "confidence": 0.5,
+      "severity": "medium",
+      "correct": false,
+      "communityforensics": {
+        "fake_prob": 0.40294149518013,
+        "verdict": "real"
+      },
+      "prithivmlmods": {
+        "fake_prob": 0.604917049407959,
+        "verdict": "manipulated"
+      }
+    },
+    {
+      "source": "real_0016",
+      "label": "real",
+      "predicted": "real",
+      "confidence": 0.73,
+      "severity": "medium",
+      "correct": true,
+      "communityforensics": {
+        "fake_prob": 0.48796436190605164,
+        "verdict": "real"
+      },
+      "prithivmlmods": {
+        "fake_prob": 0.07122445851564407,
+        "verdict": "real"
+      }
+    },
+    {
+      "source": "real_0017",
+      "label": "real",
+      "predicted": "real",
+      "confidence": 0.63,
+      "severity": "medium",
+      "correct": true,
+      "communityforensics": {
+        "fake_prob": 0.6030480265617371,
+        "verdict": "manipulated"
+      },
+      "prithivmlmods": {
+        "fake_prob": 0.1309247761964798,
+        "verdict": "real"
+      }
+    },
+    {
+      "source": "real_0018",
+      "label": "real",
+      "predicted": "manipulated",
+      "confidence": 0.49,
+      "severity": "medium",
+      "correct": false,
+      "communityforensics": {
+        "fake_prob": 0.5159597992897034,
+        "verdict": "manipulated"
+      },
+      "prithivmlmods": {
+        "fake_prob": 0.6688517332077026,
+        "verdict": "manipulated"
+      }
+    },
+    {
+      "source": "real_0019",
+      "label": "real",
+      "predicted": "manipulated",
+      "confidence": 0.6,
+      "severity": "medium",
+      "correct": false,
+      "communityforensics": {
+        "fake_prob": 0.6766951680183411,
+        "verdict": "manipulated"
+      },
+      "prithivmlmods": {
+        "fake_prob": 0.39279451966285706,
+        "verdict": "real"
+      }
+    },
+    {
+      "source": "real_0020",
+      "label": "real",
+      "predicted": "real",
+      "confidence": 0.62,
+      "severity": "medium",
+      "correct": true,
+      "communityforensics": {
+        "fake_prob": 0.6223150491714478,
+        "verdict": "manipulated"
+      },
+      "prithivmlmods": {
+        "fake_prob": 0.08792884647846222,
+        "verdict": "real"
+      }
+    },
+    {
+      "source": "real_0021",
+      "label": "real",
+      "predicted": "manipulated",
+      "confidence": 0.49,
+      "severity": "medium",
+      "correct": false,
+      "communityforensics": {
+        "fake_prob": 0.49557065963745117,
+        "verdict": "real"
+      },
+      "prithivmlmods": {
+        "fake_prob": 0.43540942668914795,
+        "verdict": "real"
+      }
+    },
+    {
+      "source": "real_0022",
+      "label": "real",
+      "predicted": "real",
+      "confidence": 0.65,
+      "severity": "medium",
+      "correct": true,
+      "communityforensics": {
+        "fake_prob": 0.5428469777107239,
+        "verdict": "manipulated"
+      },
+      "prithivmlmods": {
+        "fake_prob": 0.25031742453575134,
+        "verdict": "real"
+      }
+    },
+    {
+      "source": "real_0023",
+      "label": "real",
+      "predicted": "real",
+      "confidence": 0.63,
+      "severity": "medium",
+      "correct": true,
+      "communityforensics": {
+        "fake_prob": 0.5148032307624817,
+        "verdict": "manipulated"
+      },
+      "prithivmlmods": {
+        "fake_prob": 0.3408660590648651,
+        "verdict": "real"
+      }
+    },
+    {
+      "source": "real_0024",
+      "label": "real",
+      "predicted": "manipulated",
+      "confidence": 0.57,
+      "severity": "medium",
+      "correct": false,
+      "communityforensics": {
+        "fake_prob": 0.7621622085571289,
+        "verdict": "manipulated"
+      },
+      "prithivmlmods": {
+        "fake_prob": 0.6445758938789368,
+        "verdict": "manipulated"
+      }
+    },
+    {
+      "source": "real_0025",
+      "label": "real",
+      "predicted": "manipulated",
+      "confidence": 0.43,
+      "severity": "medium",
+      "correct": false,
+      "communityforensics": {
+        "fake_prob": 0.7221742868423462,
+        "verdict": "manipulated"
+      },
+      "prithivmlmods": {
+        "fake_prob": 0.09742971509695053,
+        "verdict": "real"
+      }
+    },
+    {
+      "source": "real_0026",
+      "label": "real",
+      "predicted": "manipulated",
+      "confidence": 0.43,
+      "severity": "medium",
+      "correct": false,
+      "communityforensics": {
+        "fake_prob": 0.710701584815979,
+        "verdict": "manipulated"
+      },
+      "prithivmlmods": {
+        "fake_prob": 0.30374208092689514,
+        "verdict": "real"
+      }
+    },
+    {
+      "source": "real_0027",
+      "label": "real",
+      "predicted": "real",
+      "confidence": 0.62,
+      "severity": "medium",
+      "correct": true,
+      "communityforensics": {
+        "fake_prob": 0.4509287476539612,
+        "verdict": "real"
+      },
+      "prithivmlmods": {
+        "fake_prob": 0.42354756593704224,
+        "verdict": "real"
+      }
+    },
+    {
+      "source": "real_0028",
+      "label": "real",
+      "predicted": "manipulated",
+      "confidence": 0.72,
+      "severity": "high",
+      "correct": false,
+      "communityforensics": {
+        "fake_prob": 0.4871349036693573,
+        "verdict": "real"
+      },
+      "prithivmlmods": {
+        "fake_prob": 0.15172475576400757,
+        "verdict": "real"
+      }
+    },
+    {
+      "source": "real_0029",
+      "label": "real",
+      "predicted": "real",
+      "confidence": 0.58,
+      "severity": "medium",
+      "correct": true,
+      "communityforensics": {
+        "fake_prob": 0.7122037410736084,
+        "verdict": "manipulated"
+      },
+      "prithivmlmods": {
+        "fake_prob": 0.19383645057678223,
+        "verdict": "real"
+      }
+    },
+    {
+      "source": "real_0030",
+      "label": "real",
+      "predicted": "real",
+      "confidence": 0.69,
+      "severity": "medium",
+      "correct": true,
+      "communityforensics": {
+        "fake_prob": 0.4190426766872406,
+        "verdict": "real"
+      },
+      "prithivmlmods": {
+        "fake_prob": 0.24723762273788452,
+        "verdict": "real"
+      }
+    },
+    {
+      "source": "real_0031",
+      "label": "real",
+      "predicted": "real",
+      "confidence": 0.71,
+      "severity": "medium",
+      "correct": true,
+      "communityforensics": {
+        "fake_prob": 0.36045196652412415,
+        "verdict": "real"
+      },
+      "prithivmlmods": {
+        "fake_prob": 0.2553309500217438,
+        "verdict": "real"
+      }
+    },
+    {
+      "source": "real_0032",
+      "label": "real",
+      "predicted": "manipulated",
+      "confidence": 0.46,
+      "severity": "medium",
+      "correct": false,
+      "communityforensics": {
+        "fake_prob": 0.4125412702560425,
+        "verdict": "real"
+      },
+      "prithivmlmods": {
+        "fake_prob": 0.3918413817882538,
+        "verdict": "real"
+      }
+    },
+    {
+      "source": "real_0033",
+      "label": "real",
+      "predicted": "real",
+      "confidence": 0.6,
+      "severity": "medium",
+      "correct": true,
+      "communityforensics": {
+        "fake_prob": 0.6678697466850281,
+        "verdict": "manipulated"
+      },
+      "prithivmlmods": {
+        "fake_prob": 0.17800971865653992,
+        "verdict": "real"
+      }
+    },
+    {
+      "source": "real_0034",
+      "label": "real",
+      "predicted": "real",
+      "confidence": 0.74,
+      "severity": "medium",
+      "correct": true,
+      "communityforensics": {
+        "fake_prob": 0.41602328419685364,
+        "verdict": "real"
+      },
+      "prithivmlmods": {
+        "fake_prob": 0.1251862496137619,
+        "verdict": "real"
+      }
+    },
+    {
+      "source": "real_0035",
+      "label": "real",
+      "predicted": "real",
+      "confidence": 0.71,
+      "severity": "medium",
+      "correct": true,
+      "communityforensics": {
+        "fake_prob": 0.33840039372444153,
+        "verdict": "real"
+      },
+      "prithivmlmods": {
+        "fake_prob": 0.2851106822490692,
+        "verdict": "real"
+      }
+    },
+    {
+      "source": "real_0036",
+      "label": "real",
+      "predicted": "manipulated",
+      "confidence": 0.44,
+      "severity": "medium",
+      "correct": false,
+      "communityforensics": {
+        "fake_prob": 0.7486525177955627,
+        "verdict": "manipulated"
+      },
+      "prithivmlmods": {
+        "fake_prob": 0.2350817322731018,
+        "verdict": "real"
+      }
+    },
+    {
+      "source": "real_0037",
+      "label": "real",
+      "predicted": "manipulated",
+      "confidence": 0.7,
+      "severity": "high",
+      "correct": false,
+      "communityforensics": {
+        "fake_prob": 0.5247051119804382,
+        "verdict": "manipulated"
+      },
+      "prithivmlmods": {
+        "fake_prob": 0.19740940630435944,
+        "verdict": "real"
+      }
+    },
+    {
+      "source": "real_0038",
+      "label": "real",
+      "predicted": "real",
+      "confidence": 0.63,
+      "severity": "medium",
+      "correct": true,
+      "communityforensics": {
+        "fake_prob": 0.35816943645477295,
+        "verdict": "real"
+      },
+      "prithivmlmods": {
+        "fake_prob": 0.49786433577537537,
+        "verdict": "real"
+      }
+    },
+    {
+      "source": "real_0039",
+      "label": "real",
+      "predicted": "manipulated",
+      "confidence": 0.44,
+      "severity": "medium",
+      "correct": false,
+      "communityforensics": {
+        "fake_prob": 0.3901445269584656,
+        "verdict": "real"
+      },
+      "prithivmlmods": {
+        "fake_prob": 0.6542047262191772,
+        "verdict": "manipulated"
+      }
+    },
+    {
+      "source": "real_0040",
+      "label": "real",
+      "predicted": "manipulated",
+      "confidence": 0.57,
+      "severity": "medium",
+      "correct": false,
+      "communityforensics": {
+        "fake_prob": 0.6279648542404175,
+        "verdict": "manipulated"
+      },
+      "prithivmlmods": {
+        "fake_prob": 0.784181535243988,
+        "verdict": "manipulated"
+      }
+    },
+    {
+      "source": "real_0041",
+      "label": "real",
+      "predicted": "manipulated",
+      "confidence": 0.61,
+      "severity": "medium",
+      "correct": false,
+      "communityforensics": {
+        "fake_prob": 0.722085177898407,
+        "verdict": "manipulated"
+      },
+      "prithivmlmods": {
+        "fake_prob": 0.7973570823669434,
+        "verdict": "manipulated"
+      }
+    },
+    {
+      "source": "real_0042",
+      "label": "real",
+      "predicted": "real",
+      "confidence": 0.63,
+      "severity": "medium",
+      "correct": true,
+      "communityforensics": {
+        "fake_prob": 0.3679889738559723,
+        "verdict": "real"
+      },
+      "prithivmlmods": {
+        "fake_prob": 0.46442633867263794,
+        "verdict": "real"
+      }
+    },
+    {
+      "source": "real_0043",
+      "label": "real",
+      "predicted": "manipulated",
+      "confidence": 0.52,
+      "severity": "medium",
+      "correct": false,
+      "communityforensics": {
+        "fake_prob": 0.6398909091949463,
+        "verdict": "manipulated"
+      },
+      "prithivmlmods": {
+        "fake_prob": 0.6249361038208008,
+        "verdict": "manipulated"
+      }
+    },
+    {
+      "source": "real_0044",
+      "label": "real",
+      "predicted": "manipulated",
+      "confidence": 0.71,
+      "severity": "high",
+      "correct": false,
+      "communityforensics": {
+        "fake_prob": 0.4893510937690735,
+        "verdict": "real"
+      },
+      "prithivmlmods": {
+        "fake_prob": 0.21359451115131378,
+        "verdict": "real"
+      }
+    },
+    {
+      "source": "real_0045",
+      "label": "real",
+      "predicted": "real",
+      "confidence": 0.6,
+      "severity": "medium",
+      "correct": true,
+      "communityforensics": {
+        "fake_prob": 0.5774480700492859,
+        "verdict": "manipulated"
+      },
+      "prithivmlmods": {
+        "fake_prob": 0.3452056050300598,
+        "verdict": "real"
+      }
+    },
+    {
+      "source": "real_0046",
+      "label": "real",
+      "predicted": "real",
+      "confidence": 0.7,
+      "severity": "medium",
+      "correct": true,
+      "communityforensics": {
+        "fake_prob": 0.40331268310546875,
+        "verdict": "real"
+      },
+      "prithivmlmods": {
+        "fake_prob": 0.2423291802406311,
+        "verdict": "real"
+      }
+    },
+    {
+      "source": "real_0047",
+      "label": "real",
+      "predicted": "real",
+      "confidence": 0.59,
+      "severity": "medium",
+      "correct": true,
+      "communityforensics": {
+        "fake_prob": 0.5305302143096924,
+        "verdict": "manipulated"
+      },
+      "prithivmlmods": {
+        "fake_prob": 0.43792128562927246,
+        "verdict": "real"
+      }
+    },
+    {
+      "source": "real_0048",
+      "label": "real",
+      "predicted": "manipulated",
+      "confidence": 0.67,
+      "severity": "medium",
+      "correct": false,
+      "communityforensics": {
+        "fake_prob": 0.567360520362854,
+        "verdict": "manipulated"
+      },
+      "prithivmlmods": {
+        "fake_prob": 0.30888831615448,
+        "verdict": "real"
+      }
+    },
+    {
+      "source": "real_0049",
+      "label": "real",
+      "predicted": "real",
+      "confidence": 0.72,
+      "severity": "medium",
+      "correct": true,
+      "communityforensics": {
+        "fake_prob": 0.4607713222503662,
+        "verdict": "real"
+      },
+      "prithivmlmods": {
+        "fake_prob": 0.13526464998722076,
+        "verdict": "real"
+      }
+    },
+    {
+      "source": "real_0050",
+      "label": "real",
+      "predicted": "manipulated",
+      "confidence": 0.52,
+      "severity": "medium",
+      "correct": false,
+      "communityforensics": {
+        "fake_prob": 0.7744936943054199,
+        "verdict": "manipulated"
+      },
+      "prithivmlmods": {
+        "fake_prob": 0.50904381275177,
+        "verdict": "manipulated"
+      }
+    },
+    {
+      "source": "real_0051",
+      "label": "real",
+      "predicted": "manipulated",
+      "confidence": 0.68,
+      "severity": "medium",
+      "correct": false,
+      "communityforensics": {
+        "fake_prob": 0.718024492263794,
+        "verdict": "manipulated"
+      },
+      "prithivmlmods": {
+        "fake_prob": 0.588242769241333,
+        "verdict": "manipulated"
+      }
+    },
+    {
+      "source": "real_0052",
+      "label": "real",
+      "predicted": "manipulated",
+      "confidence": 0.49,
+      "severity": "medium",
+      "correct": false,
+      "communityforensics": {
+        "fake_prob": 0.719869077205658,
+        "verdict": "manipulated"
+      },
+      "prithivmlmods": {
+        "fake_prob": 0.4777985215187073,
+        "verdict": "real"
+      }
+    },
+    {
+      "source": "real_0053",
+      "label": "real",
+      "predicted": "real",
+      "confidence": 0.73,
+      "severity": "medium",
+      "correct": true,
+      "communityforensics": {
+        "fake_prob": 0.32897651195526123,
+        "verdict": "real"
+      },
+      "prithivmlmods": {
+        "fake_prob": 0.2160496860742569,
+        "verdict": "real"
+      }
+    },
+    {
+      "source": "real_0054",
+      "label": "real",
+      "predicted": "real",
+      "confidence": 0.62,
+      "severity": "medium",
+      "correct": true,
+      "communityforensics": {
+        "fake_prob": 0.6243881583213806,
+        "verdict": "manipulated"
+      },
+      "prithivmlmods": {
+        "fake_prob": 0.24672101438045502,
+        "verdict": "real"
+      }
+    },
+    {
+      "source": "real_0055",
+      "label": "real",
+      "predicted": "real",
+      "confidence": 0.6,
+      "severity": "medium",
+      "correct": true,
+      "communityforensics": {
+        "fake_prob": 0.4572519063949585,
+        "verdict": "real"
+      },
+      "prithivmlmods": {
+        "fake_prob": 0.4753592312335968,
+        "verdict": "real"
+      }
+    },
+    {
+      "source": "real_0056",
+      "label": "real",
+      "predicted": "manipulated",
+      "confidence": 0.44,
+      "severity": "medium",
+      "correct": false,
+      "communityforensics": {
+        "fake_prob": 0.6298676133155823,
+        "verdict": "manipulated"
+      },
+      "prithivmlmods": {
+        "fake_prob": 0.41788405179977417,
+        "verdict": "real"
+      }
+    },
+    {
+      "source": "real_0057",
+      "label": "real",
+      "predicted": "manipulated",
+      "confidence": 0.5,
+      "severity": "medium",
+      "correct": false,
+      "communityforensics": {
+        "fake_prob": 0.537388026714325,
+        "verdict": "manipulated"
+      },
+      "prithivmlmods": {
+        "fake_prob": 0.467772901058197,
+        "verdict": "real"
+      }
+    },
+    {
+      "source": "real_0058",
+      "label": "real",
+      "predicted": "manipulated",
+      "confidence": 0.44,
+      "severity": "medium",
+      "correct": false,
+      "communityforensics": {
+        "fake_prob": 0.4694240391254425,
+        "verdict": "real"
+      },
+      "prithivmlmods": {
+        "fake_prob": 0.5674169063568115,
+        "verdict": "manipulated"
+      }
+    },
+    {
+      "source": "real_0059",
+      "label": "real",
+      "predicted": "real",
+      "confidence": 0.64,
+      "severity": "medium",
+      "correct": true,
+      "communityforensics": {
+        "fake_prob": 0.36488571763038635,
+        "verdict": "real"
+      },
+      "prithivmlmods": {
+        "fake_prob": 0.4450015425682068,
+        "verdict": "real"
+      }
+    },
+    {
+      "source": "real_0060",
+      "label": "real",
+      "predicted": "manipulated",
+      "confidence": 0.73,
+      "severity": "high",
+      "correct": false,
+      "communityforensics": {
+        "fake_prob": 0.37248918414115906,
+        "verdict": "real"
+      },
+      "prithivmlmods": {
+        "fake_prob": 0.24508586525917053,
+        "verdict": "real"
+      }
+    },
+    {
+      "source": "real_0061",
+      "label": "real",
+      "predicted": "manipulated",
+      "confidence": 0.51,
+      "severity": "medium",
+      "correct": false,
+      "communityforensics": {
+        "fake_prob": 0.6175405383110046,
+        "verdict": "manipulated"
+      },
+      "prithivmlmods": {
+        "fake_prob": 0.6193757653236389,
+        "verdict": "manipulated"
+      }
+    },
+    {
+      "source": "real_0062",
+      "label": "real",
+      "predicted": "real",
+      "confidence": 0.61,
+      "severity": "medium",
+      "correct": true,
+      "communityforensics": {
+        "fake_prob": 0.6373655200004578,
+        "verdict": "manipulated"
+      },
+      "prithivmlmods": {
+        "fake_prob": 0.1580660492181778,
+        "verdict": "real"
+      }
+    },
+    {
+      "source": "real_0063",
+      "label": "real",
+      "predicted": "real",
+      "confidence": 0.66,
+      "severity": "medium",
+      "correct": true,
+      "communityforensics": {
+        "fake_prob": 0.4864439368247986,
+        "verdict": "real"
+      },
+      "prithivmlmods": {
+        "fake_prob": 0.2847318649291992,
+        "verdict": "real"
+      }
+    },
+    {
+      "source": "real_0064",
+      "label": "real",
+      "predicted": "manipulated",
+      "confidence": 0.72,
+      "severity": "high",
+      "correct": false,
+      "communityforensics": {
+        "fake_prob": 0.47253188490867615,
+        "verdict": "real"
+      },
+      "prithivmlmods": {
+        "fake_prob": 0.1785738170146942,
+        "verdict": "real"
+      }
+    },
+    {
+      "source": "real_0065",
+      "label": "real",
+      "predicted": "manipulated",
+      "confidence": 0.53,
+      "severity": "medium",
+      "correct": false,
+      "communityforensics": {
+        "fake_prob": 0.6542686223983765,
+        "verdict": "manipulated"
+      },
+      "prithivmlmods": {
+        "fake_prob": 0.6380833983421326,
+        "verdict": "manipulated"
+      }
+    },
+    {
+      "source": "real_0066",
+      "label": "real",
+      "predicted": "real",
+      "confidence": 0.65,
+      "severity": "medium",
+      "correct": true,
+      "communityforensics": {
+        "fake_prob": 0.5591397881507874,
+        "verdict": "manipulated"
+      },
+      "prithivmlmods": {
+        "fake_prob": 0.1661127805709839,
+        "verdict": "real"
+      }
+    },
+    {
+      "source": "real_0067",
+      "label": "real",
+      "predicted": "manipulated",
+      "confidence": 0.44,
+      "severity": "medium",
+      "correct": false,
+      "communityforensics": {
+        "fake_prob": 0.6735441088676453,
+        "verdict": "manipulated"
+      },
+      "prithivmlmods": {
+        "fake_prob": 0.3711584210395813,
+        "verdict": "real"
+      }
+    },
+    {
+      "source": "real_0068",
+      "label": "real",
+      "predicted": "manipulated",
+      "confidence": 0.55,
+      "severity": "medium",
+      "correct": false,
+      "communityforensics": {
+        "fake_prob": 0.675835371017456,
+        "verdict": "manipulated"
+      },
+      "prithivmlmods": {
+        "fake_prob": 0.6691176891326904,
+        "verdict": "manipulated"
+      }
+    },
+    {
+      "source": "real_0069",
+      "label": "real",
+      "predicted": "manipulated",
+      "confidence": 0.77,
+      "severity": "high",
+      "correct": false,
+      "communityforensics": {
+        "fake_prob": 0.7499271035194397,
+        "verdict": "manipulated"
+      },
+      "prithivmlmods": {
+        "fake_prob": 0.8159569501876831,
+        "verdict": "manipulated"
+      }
+    },
+    {
+      "source": "real_0070",
+      "label": "real",
+      "predicted": "real",
+      "confidence": 0.66,
+      "severity": "medium",
+      "correct": true,
+      "communityforensics": {
+        "fake_prob": 0.3832915425300598,
+        "verdict": "real"
+      },
+      "prithivmlmods": {
+        "fake_prob": 0.3735337257385254,
+        "verdict": "real"
+      }
+    },
+    {
+      "source": "real_0071",
+      "label": "real",
+      "predicted": "real",
+      "confidence": 0.64,
+      "severity": "medium",
+      "correct": true,
+      "communityforensics": {
+        "fake_prob": 0.5895398259162903,
+        "verdict": "manipulated"
+      },
+      "prithivmlmods": {
+        "fake_prob": 0.10282524675130844,
+        "verdict": "real"
+      }
+    },
+    {
+      "source": "real_0072",
+      "label": "real",
+      "predicted": "real",
+      "confidence": 0.66,
+      "severity": "medium",
+      "correct": true,
+      "communityforensics": {
+        "fake_prob": 0.5363038778305054,
+        "verdict": "manipulated"
+      },
+      "prithivmlmods": {
+        "fake_prob": 0.16744199395179749,
+        "verdict": "real"
+      }
+    },
+    {
+      "source": "real_0073",
+      "label": "real",
+      "predicted": "manipulated",
+      "confidence": 0.5,
+      "severity": "medium",
+      "correct": false,
+      "communityforensics": {
+        "fake_prob": 0.756928563117981,
+        "verdict": "manipulated"
+      },
+      "prithivmlmods": {
+        "fake_prob": 0.4707566499710083,
+        "verdict": "real"
+      }
+    },
+    {
+      "source": "real_0074",
+      "label": "real",
+      "predicted": "manipulated",
+      "confidence": 0.48,
+      "severity": "medium",
+      "correct": false,
+      "communityforensics": {
+        "fake_prob": 0.6370008587837219,
+        "verdict": "manipulated"
+      },
+      "prithivmlmods": {
+        "fake_prob": 0.5223926305770874,
+        "verdict": "manipulated"
+      }
+    },
+    {
+      "source": "real_0075",
+      "label": "real",
+      "predicted": "real",
+      "confidence": 0.71,
+      "severity": "medium",
+      "correct": true,
+      "communityforensics": {
+        "fake_prob": 0.35789892077445984,
+        "verdict": "real"
+      },
+      "prithivmlmods": {
+        "fake_prob": 0.26880359649658203,
+        "verdict": "real"
+      }
+    },
+    {
+      "source": "real_0076",
+      "label": "real",
+      "predicted": "manipulated",
+      "confidence": 0.46,
+      "severity": "medium",
+      "correct": false,
+      "communityforensics": {
+        "fake_prob": 0.6104245185852051,
+        "verdict": "manipulated"
+      },
+      "prithivmlmods": {
+        "fake_prob": 0.48717254400253296,
+        "verdict": "real"
+      }
+    },
+    {
+      "source": "real_0077",
+      "label": "real",
+      "predicted": "manipulated",
+      "confidence": 0.43,
+      "severity": "medium",
+      "correct": false,
+      "communityforensics": {
+        "fake_prob": 0.7180790305137634,
+        "verdict": "manipulated"
+      },
+      "prithivmlmods": {
+        "fake_prob": 0.30592086911201477,
+        "verdict": "real"
+      }
+    },
+    {
+      "source": "real_0078",
+      "label": "real",
+      "predicted": "real",
+      "confidence": 0.67,
+      "severity": "medium",
+      "correct": true,
+      "communityforensics": {
+        "fake_prob": 0.4461764991283417,
+        "verdict": "real"
+      },
+      "prithivmlmods": {
+        "fake_prob": 0.2964588403701782,
+        "verdict": "real"
+      }
+    },
+    {
+      "source": "real_0079",
+      "label": "real",
+      "predicted": "manipulated",
+      "confidence": 0.65,
+      "severity": "medium",
+      "correct": false,
+      "communityforensics": {
+        "fake_prob": 0.6953689455986023,
+        "verdict": "manipulated"
+      },
+      "prithivmlmods": {
+        "fake_prob": 0.2947008013725281,
+        "verdict": "real"
+      }
+    },
+    {
+      "source": "real_0080",
+      "label": "real",
+      "predicted": "manipulated",
+      "confidence": 0.44,
+      "severity": "medium",
+      "correct": false,
+      "communityforensics": {
+        "fake_prob": 0.4038686454296112,
+        "verdict": "real"
+      },
+      "prithivmlmods": {
+        "fake_prob": 0.6320037841796875,
+        "verdict": "manipulated"
+      }
+    },
+    {
+      "source": "real_0081",
+      "label": "real",
+      "predicted": "real",
+      "confidence": 0.6,
+      "severity": "medium",
+      "correct": true,
+      "communityforensics": {
+        "fake_prob": 0.6599971055984497,
+        "verdict": "manipulated"
+      },
+      "prithivmlmods": {
+        "fake_prob": 0.16645607352256775,
+        "verdict": "real"
+      }
+    },
+    {
+      "source": "real_0082",
+      "label": "real",
+      "predicted": "manipulated",
+      "confidence": 0.45,
+      "severity": "medium",
+      "correct": false,
+      "communityforensics": {
+        "fake_prob": 0.41092053055763245,
+        "verdict": "real"
+      },
+      "prithivmlmods": {
+        "fake_prob": 0.6490432024002075,
+        "verdict": "manipulated"
+      }
+    },
+    {
+      "source": "real_0083",
+      "label": "real",
+      "predicted": "real",
+      "confidence": 0.63,
+      "severity": "medium",
+      "correct": true,
+      "communityforensics": {
+        "fake_prob": 0.4448694884777069,
+        "verdict": "real"
+      },
+      "prithivmlmods": {
+        "fake_prob": 0.1849079430103302,
+        "verdict": "real"
+      }
+    },
+    {
+      "source": "real_0084",
+      "label": "real",
+      "predicted": "real",
+      "confidence": 0.62,
+      "severity": "medium",
+      "correct": true,
+      "communityforensics": {
+        "fake_prob": 0.41910508275032043,
+        "verdict": "real"
+      },
+      "prithivmlmods": {
+        "fake_prob": 0.46113839745521545,
+        "verdict": "real"
+      }
+    },
+    {
+      "source": "real_0085",
+      "label": "real",
+      "predicted": "manipulated",
+      "confidence": 0.49,
+      "severity": "medium",
+      "correct": false,
+      "communityforensics": {
+        "fake_prob": 0.49791470170021057,
+        "verdict": "real"
+      },
+      "prithivmlmods": {
+        "fake_prob": 0.6820653676986694,
+        "verdict": "manipulated"
+      }
+    },
+    {
+      "source": "real_0086",
+      "label": "real",
+      "predicted": "manipulated",
+      "confidence": 0.71,
+      "severity": "high",
+      "correct": false,
+      "communityforensics": {
+        "fake_prob": 0.43185898661613464,
+        "verdict": "real"
+      },
+      "prithivmlmods": {
+        "fake_prob": 0.2730426490306854,
+        "verdict": "real"
+      }
+    },
+    {
+      "source": "real_0087",
+      "label": "real",
+      "predicted": "manipulated",
+      "confidence": 0.61,
+      "severity": "medium",
+      "correct": false,
+      "communityforensics": {
+        "fake_prob": 0.6651353240013123,
+        "verdict": "manipulated"
+      },
+      "prithivmlmods": {
+        "fake_prob": 0.6472530364990234,
+        "verdict": "manipulated"
+      }
+    },
+    {
+      "source": "real_0088",
+      "label": "real",
+      "predicted": "real",
+      "confidence": 0.68,
+      "severity": "medium",
+      "correct": true,
+      "communityforensics": {
+        "fake_prob": 0.4162727892398834,
+        "verdict": "real"
+      },
+      "prithivmlmods": {
+        "fake_prob": 0.2855885326862335,
+        "verdict": "real"
+      }
+    },
+    {
+      "source": "real_0089",
+      "label": "real",
+      "predicted": "real",
+      "confidence": 0.7,
+      "severity": "medium",
+      "correct": true,
+      "communityforensics": {
+        "fake_prob": 0.36330747604370117,
+        "verdict": "real"
+      },
+      "prithivmlmods": {
+        "fake_prob": 0.2777065336704254,
+        "verdict": "real"
+      }
+    },
+    {
+      "source": "real_0090",
+      "label": "real",
+      "predicted": "real",
+      "confidence": 0.62,
+      "severity": "medium",
+      "correct": true,
+      "communityforensics": {
+        "fake_prob": 0.46451377868652344,
+        "verdict": "real"
+      },
+      "prithivmlmods": {
+        "fake_prob": 0.18210120499134064,
+        "verdict": "real"
+      }
+    },
+    {
+      "source": "real_0091",
+      "label": "real",
+      "predicted": "manipulated",
+      "confidence": 0.59,
+      "severity": "medium",
+      "correct": false,
+      "communityforensics": {
+        "fake_prob": 0.8087597489356995,
+        "verdict": "manipulated"
+      },
+      "prithivmlmods": {
+        "fake_prob": 0.66495680809021,
+        "verdict": "manipulated"
+      }
+    },
+    {
+      "source": "real_0092",
+      "label": "real",
+      "predicted": "manipulated",
+      "confidence": 0.49,
+      "severity": "medium",
+      "correct": false,
+      "communityforensics": {
+        "fake_prob": 0.7108862400054932,
+        "verdict": "manipulated"
+      },
+      "prithivmlmods": {
+        "fake_prob": 0.4739207625389099,
+        "verdict": "real"
+      }
+    },
+    {
+      "source": "real_0093",
+      "label": "real",
+      "predicted": "manipulated",
+      "confidence": 0.68,
+      "severity": "medium",
+      "correct": false,
+      "communityforensics": {
+        "fake_prob": 0.4603935480117798,
+        "verdict": "real"
+      },
+      "prithivmlmods": {
+        "fake_prob": 0.40791448950767517,
+        "verdict": "real"
+      }
+    },
+    {
+      "source": "real_0094",
+      "label": "real",
+      "predicted": "real",
+      "confidence": 0.68,
+      "severity": "medium",
+      "correct": true,
+      "communityforensics": {
+        "fake_prob": 0.41671815514564514,
+        "verdict": "real"
+      },
+      "prithivmlmods": {
+        "fake_prob": 0.27037888765335083,
+        "verdict": "real"
+      }
+    },
+    {
+      "source": "real_0095",
+      "label": "real",
+      "predicted": "real",
+      "confidence": 0.62,
+      "severity": "medium",
+      "correct": true,
+      "communityforensics": {
+        "fake_prob": 0.4159112274646759,
+        "verdict": "real"
+      },
+      "prithivmlmods": {
+        "fake_prob": 0.4673908054828644,
+        "verdict": "real"
+      }
+    },
+    {
+      "source": "real_0096",
+      "label": "real",
+      "predicted": "manipulated",
+      "confidence": 0.48,
+      "severity": "medium",
+      "correct": false,
+      "communityforensics": {
+        "fake_prob": 0.7022082805633545,
+        "verdict": "manipulated"
+      },
+      "prithivmlmods": {
+        "fake_prob": 0.4441441595554352,
+        "verdict": "real"
+      }
+    },
+    {
+      "source": "real_0097",
+      "label": "real",
+      "predicted": "manipulated",
+      "confidence": 0.47,
+      "severity": "medium",
+      "correct": false,
+      "communityforensics": {
+        "fake_prob": 0.5487080216407776,
+        "verdict": "manipulated"
+      },
+      "prithivmlmods": {
+        "fake_prob": 0.28443092107772827,
+        "verdict": "real"
+      }
+    },
+    {
+      "source": "real_0098",
+      "label": "real",
+      "predicted": "real",
+      "confidence": 0.59,
+      "severity": "medium",
+      "correct": true,
+      "communityforensics": {
+        "fake_prob": 0.6400472521781921,
+        "verdict": "manipulated"
+      },
+      "prithivmlmods": {
+        "fake_prob": 0.3088666498661041,
+        "verdict": "real"
+      }
+    },
+    {
+      "source": "real_0099",
+      "label": "real",
+      "predicted": "real",
+      "confidence": 0.67,
+      "severity": "medium",
+      "correct": true,
+      "communityforensics": {
+        "fake_prob": 0.5232051014900208,
+        "verdict": "manipulated"
+      },
+      "prithivmlmods": {
+        "fake_prob": 0.1071474626660347,
+        "verdict": "real"
+      }
+    },
+    {
+      "source": "fake_0000",
+      "label": "fake",
+      "predicted": "real",
+      "confidence": 0.62,
+      "severity": "medium",
+      "correct": false,
+      "communityforensics": {
+        "fake_prob": 0.6161925196647644,
+        "verdict": "manipulated"
+      },
+      "prithivmlmods": {
+        "fake_prob": 0.22664451599121094,
+        "verdict": "real"
+      }
+    },
+    {
+      "source": "fake_0001",
+      "label": "fake",
+      "predicted": "real",
+      "confidence": 0.6,
+      "severity": "medium",
+      "correct": false,
+      "communityforensics": {
+        "fake_prob": 0.6700226068496704,
+        "verdict": "manipulated"
+      },
+      "prithivmlmods": {
+        "fake_prob": 0.15817990899085999,
+        "verdict": "real"
+      }
+    },
+    {
+      "source": "fake_0002",
+      "label": "fake",
+      "predicted": "manipulated",
+      "confidence": 0.59,
+      "severity": "medium",
+      "correct": true,
+      "communityforensics": {
+        "fake_prob": 0.7318738698959351,
+        "verdict": "manipulated"
+      },
+      "prithivmlmods": {
+        "fake_prob": 0.3229173719882965,
+        "verdict": "real"
+      }
+    },
+    {
+      "source": "fake_0003",
+      "label": "fake",
+      "predicted": "manipulated",
+      "confidence": 0.45,
+      "severity": "medium",
+      "correct": true,
+      "communityforensics": {
+        "fake_prob": 0.756969690322876,
+        "verdict": "manipulated"
+      },
+      "prithivmlmods": {
+        "fake_prob": 0.31932711601257324,
+        "verdict": "real"
+      }
+    },
+    {
+      "source": "fake_0004",
+      "label": "fake",
+      "predicted": "manipulated",
+      "confidence": 0.67,
+      "severity": "medium",
+      "correct": true,
+      "communityforensics": {
+        "fake_prob": 0.5152444839477539,
+        "verdict": "manipulated"
+      },
+      "prithivmlmods": {
+        "fake_prob": 0.4026408791542053,
+        "verdict": "real"
+      }
+    },
+    {
+      "source": "fake_0005",
+      "label": "fake",
+      "predicted": "manipulated",
+      "confidence": 0.66,
+      "severity": "medium",
+      "correct": true,
+      "communityforensics": {
+        "fake_prob": 0.4185023307800293,
+        "verdict": "real"
+      },
+      "prithivmlmods": {
+        "fake_prob": 0.5545864701271057,
+        "verdict": "manipulated"
+      }
+    },
+    {
+      "source": "fake_0006",
+      "label": "fake",
+      "predicted": "real",
+      "confidence": 0.58,
+      "severity": "medium",
+      "correct": false,
+      "communityforensics": {
+        "fake_prob": 0.41108667850494385,
+        "verdict": "real"
+      },
+      "prithivmlmods": {
+        "fake_prob": 0.5831993818283081,
+        "verdict": "manipulated"
+      }
+    },
+    {
+      "source": "fake_0007",
+      "label": "fake",
+      "predicted": "manipulated",
+      "confidence": 0.69,
+      "severity": "medium",
+      "correct": true,
+      "communityforensics": {
+        "fake_prob": 0.5245497822761536,
+        "verdict": "manipulated"
+      },
+      "prithivmlmods": {
+        "fake_prob": 0.2867043912410736,
+        "verdict": "real"
+      }
+    },
+    {
+      "source": "fake_0008",
+      "label": "fake",
+      "predicted": "manipulated",
+      "confidence": 0.44,
+      "severity": "medium",
+      "correct": true,
+      "communityforensics": {
+        "fake_prob": 0.5979852676391602,
+        "verdict": "manipulated"
+      },
+      "prithivmlmods": {
+        "fake_prob": 0.44149407744407654,
+        "verdict": "real"
+      }
+    },
+    {
+      "source": "fake_0009",
+      "label": "fake",
+      "predicted": "manipulated",
+      "confidence": 0.7,
+      "severity": "high",
+      "correct": true,
+      "communityforensics": {
+        "fake_prob": 0.440405011177063,
+        "verdict": "real"
+      },
+      "prithivmlmods": {
+        "fake_prob": 0.3044370710849762,
+        "verdict": "real"
+      }
+    },
+    {
+      "source": "fake_0010",
+      "label": "fake",
+      "predicted": "real",
+      "confidence": 0.65,
+      "severity": "medium",
+      "correct": false,
+      "communityforensics": {
+        "fake_prob": 0.3780418634414673,
+        "verdict": "real"
+      },
+      "prithivmlmods": {
+        "fake_prob": 0.39543625712394714,
+        "verdict": "real"
+      }
+    },
+    {
+      "source": "fake_0011",
+      "label": "fake",
+      "predicted": "manipulated",
+      "confidence": 0.74,
+      "severity": "high",
+      "correct": true,
+      "communityforensics": {
+        "fake_prob": 0.37931692600250244,
+        "verdict": "real"
+      },
+      "prithivmlmods": {
+        "fake_prob": 0.1929118037223816,
+        "verdict": "real"
+      }
+    },
+    {
+      "source": "fake_0012",
+      "label": "fake",
+      "predicted": "manipulated",
+      "confidence": 0.9,
+      "severity": "critical",
+      "correct": true,
+      "communityforensics": {
+        "fake_prob": 0.3210395276546478,
+        "verdict": "real"
+      },
+      "prithivmlmods": {
+        "fake_prob": 0.20275874435901642,
+        "verdict": "real"
+      }
+    },
+    {
+      "source": "fake_0013",
+      "label": "fake",
+      "predicted": "manipulated",
+      "confidence": 0.48,
+      "severity": "medium",
+      "correct": true,
+      "communityforensics": {
+        "fake_prob": 0.8227840662002563,
+        "verdict": "manipulated"
+      },
+      "prithivmlmods": {
+        "fake_prob": 0.22846636176109314,
+        "verdict": "real"
+      }
+    },
+    {
+      "source": "fake_0014",
+      "label": "fake",
+      "predicted": "manipulated",
+      "confidence": 0.51,
+      "severity": "medium",
+      "correct": true,
+      "communityforensics": {
+        "fake_prob": 0.6272385716438293,
+        "verdict": "manipulated"
+      },
+      "prithivmlmods": {
+        "fake_prob": 0.6240550875663757,
+        "verdict": "manipulated"
+      }
+    },
+    {
+      "source": "fake_0015",
+      "label": "fake",
+      "predicted": "manipulated",
+      "confidence": 0.69,
+      "severity": "medium",
+      "correct": true,
+      "communityforensics": {
+        "fake_prob": 0.4356287717819214,
+        "verdict": "real"
+      },
+      "prithivmlmods": {
+        "fake_prob": 0.34670430421829224,
+        "verdict": "real"
+      }
+    },
+    {
+      "source": "fake_0016",
+      "label": "fake",
+      "predicted": "manipulated",
+      "confidence": 0.73,
+      "severity": "high",
+      "correct": true,
+      "communityforensics": {
+        "fake_prob": 0.4607335329055786,
+        "verdict": "real"
+      },
+      "prithivmlmods": {
+        "fake_prob": 0.15403880178928375,
+        "verdict": "real"
+      }
+    },
+    {
+      "source": "fake_0017",
+      "label": "fake",
+      "predicted": "manipulated",
+      "confidence": 0.46,
+      "severity": "medium",
+      "correct": true,
+      "communityforensics": {
+        "fake_prob": 0.502301037311554,
+        "verdict": "manipulated"
+      },
+      "prithivmlmods": {
+        "fake_prob": 0.5970932841300964,
+        "verdict": "manipulated"
+      }
+    },
+    {
+      "source": "fake_0018",
+      "label": "fake",
+      "predicted": "real",
+      "confidence": 0.59,
+      "severity": "medium",
+      "correct": false,
+      "communityforensics": {
+        "fake_prob": 0.43354666233062744,
+        "verdict": "real"
+      },
+      "prithivmlmods": {
+        "fake_prob": 0.5356884598731995,
+        "verdict": "manipulated"
+      }
+    },
+    {
+      "source": "fake_0019",
+      "label": "fake",
+      "predicted": "manipulated",
+      "confidence": 0.67,
+      "severity": "medium",
+      "correct": true,
+      "communityforensics": {
+        "fake_prob": 0.3859555423259735,
+        "verdict": "real"
+      },
+      "prithivmlmods": {
+        "fake_prob": 0.5043397545814514,
+        "verdict": "manipulated"
+      }
+    },
+    {
+      "source": "fake_0020",
+      "label": "fake",
+      "predicted": "manipulated",
+      "confidence": 0.44,
+      "severity": "medium",
+      "correct": true,
+      "communityforensics": {
+        "fake_prob": 0.7352381348609924,
+        "verdict": "manipulated"
+      },
+      "prithivmlmods": {
+        "fake_prob": 0.19312116503715515,
+        "verdict": "real"
+      }
+    },
+    {
+      "source": "fake_0021",
+      "label": "fake",
+      "predicted": "manipulated",
+      "confidence": 0.87,
+      "severity": "critical",
+      "correct": true,
+      "communityforensics": {
+        "fake_prob": 0.31873443722724915,
+        "verdict": "real"
+      },
+      "prithivmlmods": {
+        "fake_prob": 0.3165131211280823,
+        "verdict": "real"
+      }
+    },
+    {
+      "source": "fake_0022",
+      "label": "fake",
+      "predicted": "manipulated",
+      "confidence": 0.58,
+      "severity": "medium",
+      "correct": true,
+      "communityforensics": {
+        "fake_prob": 0.7152267098426819,
+        "verdict": "manipulated"
+      },
+      "prithivmlmods": {
+        "fake_prob": 0.1832215040922165,
+        "verdict": "real"
+      }
+    },
+    {
+      "source": "fake_0023",
+      "label": "fake",
+      "predicted": "real",
+      "confidence": 0.6,
+      "severity": "medium",
+      "correct": false,
+      "communityforensics": {
+        "fake_prob": 0.586998701095581,
+        "verdict": "manipulated"
+      },
+      "prithivmlmods": {
+        "fake_prob": 0.3487708270549774,
+        "verdict": "real"
+      }
+    },
+    {
+      "source": "fake_0024",
+      "label": "fake",
+      "predicted": "manipulated",
+      "confidence": 0.72,
+      "severity": "high",
+      "correct": true,
+      "communityforensics": {
+        "fake_prob": 0.6647335290908813,
+        "verdict": "manipulated"
+      },
+      "prithivmlmods": {
+        "fake_prob": 0.7505143284797668,
+        "verdict": "manipulated"
+      }
+    },
+    {
+      "source": "fake_0025",
+      "label": "fake",
+      "predicted": "manipulated",
+      "confidence": 0.71,
+      "severity": "high",
+      "correct": true,
+      "communityforensics": {
+        "fake_prob": 0.3993098735809326,
+        "verdict": "real"
+      },
+      "prithivmlmods": {
+        "fake_prob": 0.3230953812599182,
+        "verdict": "real"
+      }
+    },
+    {
+      "source": "fake_0026",
+      "label": "fake",
+      "predicted": "manipulated",
+      "confidence": 0.68,
+      "severity": "medium",
+      "correct": true,
+      "communityforensics": {
+        "fake_prob": 0.7022846937179565,
+        "verdict": "manipulated"
+      },
+      "prithivmlmods": {
+        "fake_prob": 0.6108583807945251,
+        "verdict": "manipulated"
+      }
+    },
+    {
+      "source": "fake_0027",
+      "label": "fake",
+      "predicted": "manipulated",
+      "confidence": 0.54,
+      "severity": "medium",
+      "correct": true,
+      "communityforensics": {
+        "fake_prob": 0.6262205839157104,
+        "verdict": "manipulated"
+      },
+      "prithivmlmods": {
+        "fake_prob": 0.7151044607162476,
+        "verdict": "manipulated"
+      }
+    },
+    {
+      "source": "fake_0028",
+      "label": "fake",
+      "predicted": "real",
+      "confidence": 0.67,
+      "severity": "medium",
+      "correct": false,
+      "communityforensics": {
+        "fake_prob": 0.3824355900287628,
+        "verdict": "real"
+      },
+      "prithivmlmods": {
+        "fake_prob": 0.3443590998649597,
+        "verdict": "real"
+      }
+    },
+    {
+      "source": "fake_0029",
+      "label": "fake",
+      "predicted": "manipulated",
+      "confidence": 0.74,
+      "severity": "high",
+      "correct": true,
+      "communityforensics": {
+        "fake_prob": 0.3988916575908661,
+        "verdict": "real"
+      },
+      "prithivmlmods": {
+        "fake_prob": 0.16175051033496857,
+        "verdict": "real"
+      }
+    },
+    {
+      "source": "fake_0030",
+      "label": "fake",
+      "predicted": "real",
+      "confidence": 0.59,
+      "severity": "medium",
+      "correct": false,
+      "communityforensics": {
+        "fake_prob": 0.412236750125885,
+        "verdict": "real"
+      },
+      "prithivmlmods": {
+        "fake_prob": 0.5536359548568726,
+        "verdict": "manipulated"
+      }
+    },
+    {
+      "source": "fake_0031",
+      "label": "fake",
+      "predicted": "manipulated",
+      "confidence": 0.57,
+      "severity": "medium",
+      "correct": true,
+      "communityforensics": {
+        "fake_prob": 0.6508410573005676,
+        "verdict": "manipulated"
+      },
+      "prithivmlmods": {
+        "fake_prob": 0.7628127932548523,
+        "verdict": "manipulated"
+      }
+    },
+    {
+      "source": "fake_0032",
+      "label": "fake",
+      "predicted": "real",
+      "confidence": 0.65,
+      "severity": "medium",
+      "correct": false,
+      "communityforensics": {
+        "fake_prob": 0.3798733353614807,
+        "verdict": "real"
+      },
+      "prithivmlmods": {
+        "fake_prob": 0.4057806730270386,
+        "verdict": "real"
+      }
+    },
+    {
+      "source": "fake_0033",
+      "label": "fake",
+      "predicted": "real",
+      "confidence": 0.69,
+      "severity": "medium",
+      "correct": false,
+      "communityforensics": {
+        "fake_prob": 0.42297831177711487,
+        "verdict": "real"
+      },
+      "prithivmlmods": {
+        "fake_prob": 0.2418581247329712,
+        "verdict": "real"
+      }
+    },
+    {
+      "source": "fake_0034",
+      "label": "fake",
+      "predicted": "manipulated",
+      "confidence": 0.55,
+      "severity": "medium",
+      "correct": true,
+      "communityforensics": {
+        "fake_prob": 0.6441677808761597,
+        "verdict": "manipulated"
+      },
+      "prithivmlmods": {
+        "fake_prob": 0.7206693291664124,
+        "verdict": "manipulated"
+      }
+    },
+    {
+      "source": "fake_0035",
+      "label": "fake",
+      "predicted": "real",
+      "confidence": 0.61,
+      "severity": "medium",
+      "correct": false,
+      "communityforensics": {
+        "fake_prob": 0.36257404088974,
+        "verdict": "real"
+      },
+      "prithivmlmods": {
+        "fake_prob": 0.5232666730880737,
+        "verdict": "manipulated"
+      }
+    },
+    {
+      "source": "fake_0036",
+      "label": "fake",
+      "predicted": "manipulated",
+      "confidence": 0.66,
+      "severity": "medium",
+      "correct": true,
+      "communityforensics": {
+        "fake_prob": 0.4461968243122101,
+        "verdict": "real"
+      },
+      "prithivmlmods": {
+        "fake_prob": 0.5033794641494751,
+        "verdict": "manipulated"
+      }
+    },
+    {
+      "source": "fake_0037",
+      "label": "fake",
+      "predicted": "manipulated",
+      "confidence": 0.67,
+      "severity": "medium",
+      "correct": true,
+      "communityforensics": {
+        "fake_prob": 0.37091442942619324,
+        "verdict": "real"
+      },
+      "prithivmlmods": {
+        "fake_prob": 0.8873973488807678,
+        "verdict": "manipulated"
+      }
+    },
+    {
+      "source": "fake_0038",
+      "label": "fake",
+      "predicted": "manipulated",
+      "confidence": 0.45,
+      "severity": "medium",
+      "correct": true,
+      "communityforensics": {
+        "fake_prob": 0.42060285806655884,
+        "verdict": "real"
+      },
+      "prithivmlmods": {
+        "fake_prob": 0.6547028422355652,
+        "verdict": "manipulated"
+      }
+    },
+    {
+      "source": "fake_0039",
+      "label": "fake",
+      "predicted": "manipulated",
+      "confidence": 0.68,
+      "severity": "medium",
+      "correct": true,
+      "communityforensics": {
+        "fake_prob": 0.39531370997428894,
+        "verdict": "real"
+      },
+      "prithivmlmods": {
+        "fake_prob": 0.441394180059433,
+        "verdict": "real"
+      }
+    },
+    {
+      "source": "fake_0040",
+      "label": "fake",
+      "predicted": "real",
+      "confidence": 0.58,
+      "severity": "medium",
+      "correct": false,
+      "communityforensics": {
+        "fake_prob": 0.5102742910385132,
+        "verdict": "manipulated"
+      },
+      "prithivmlmods": {
+        "fake_prob": 0.25519078969955444,
+        "verdict": "real"
+      }
+    },
+    {
+      "source": "fake_0041",
+      "label": "fake",
+      "predicted": "manipulated",
+      "confidence": 0.46,
+      "severity": "medium",
+      "correct": true,
+      "communityforensics": {
+        "fake_prob": 0.7894161939620972,
+        "verdict": "manipulated"
+      },
+      "prithivmlmods": {
+        "fake_prob": 0.02768835611641407,
+        "verdict": "real"
+      }
+    },
+    {
+      "source": "fake_0042",
+      "label": "fake",
+      "predicted": "manipulated",
+      "confidence": 0.72,
+      "severity": "high",
+      "correct": true,
+      "communityforensics": {
+        "fake_prob": 0.38244903087615967,
+        "verdict": "real"
+      },
+      "prithivmlmods": {
+        "fake_prob": 0.2764492928981781,
+        "verdict": "real"
+      }
+    },
+    {
+      "source": "fake_0043",
+      "label": "fake",
+      "predicted": "manipulated",
+      "confidence": 0.69,
+      "severity": "medium",
+      "correct": true,
+      "communityforensics": {
+        "fake_prob": 0.32866841554641724,
+        "verdict": "real"
+      },
+      "prithivmlmods": {
+        "fake_prob": 0.4503121078014374,
+        "verdict": "real"
+      }
+    },
+    {
+      "source": "fake_0044",
+      "label": "fake",
+      "predicted": "manipulated",
+      "confidence": 0.59,
+      "severity": "medium",
+      "correct": true,
+      "communityforensics": {
+        "fake_prob": 0.5844300985336304,
+        "verdict": "manipulated"
+      },
+      "prithivmlmods": {
+        "fake_prob": 0.6676734685897827,
+        "verdict": "manipulated"
+      }
+    },
+    {
+      "source": "fake_0045",
+      "label": "fake",
+      "predicted": "manipulated",
+      "confidence": 0.47,
+      "severity": "medium",
+      "correct": true,
+      "communityforensics": {
+        "fake_prob": 0.6910547018051147,
+        "verdict": "manipulated"
+      },
+      "prithivmlmods": {
+        "fake_prob": 0.43874475359916687,
+        "verdict": "real"
+      }
+    },
+    {
+      "source": "fake_0046",
+      "label": "fake",
+      "predicted": "manipulated",
+      "confidence": 0.72,
+      "severity": "high",
+      "correct": true,
+      "communityforensics": {
+        "fake_prob": 0.36015889048576355,
+        "verdict": "real"
+      },
+      "prithivmlmods": {
+        "fake_prob": 0.30228593945503235,
+        "verdict": "real"
+      }
+    },
+    {
+      "source": "fake_0047",
+      "label": "fake",
+      "predicted": "real",
+      "confidence": 0.78,
+      "severity": "medium",
+      "correct": false,
+      "communityforensics": {
+        "fake_prob": 0.35243335366249084,
+        "verdict": "real"
+      },
+      "prithivmlmods": {
+        "fake_prob": 0.05180920287966728,
+        "verdict": "real"
+      }
+    },
+    {
+      "source": "fake_0048",
+      "label": "fake",
+      "predicted": "manipulated",
+      "confidence": 0.59,
+      "severity": "medium",
+      "correct": true,
+      "communityforensics": {
+        "fake_prob": 0.7288721799850464,
+        "verdict": "manipulated"
+      },
+      "prithivmlmods": {
+        "fake_prob": 0.3152855634689331,
+        "verdict": "real"
+      }
+    },
+    {
+      "source": "fake_0049",
+      "label": "fake",
+      "predicted": "real",
+      "confidence": 0.74,
+      "severity": "medium",
+      "correct": false,
+      "communityforensics": {
+        "fake_prob": 0.4522675573825836,
+        "verdict": "real"
+      },
+      "prithivmlmods": {
+        "fake_prob": 0.07223295420408249,
+        "verdict": "real"
+      }
+    },
+    {
+      "source": "fake_0050",
+      "label": "fake",
+      "predicted": "manipulated",
+      "confidence": 0.7,
+      "severity": "medium",
+      "correct": true,
+      "communityforensics": {
+        "fake_prob": 0.40965619683265686,
+        "verdict": "real"
+      },
+      "prithivmlmods": {
+        "fake_prob": 0.35618332028388977,
+        "verdict": "real"
+      }
+    },
+    {
+      "source": "fake_0051",
+      "label": "fake",
+      "predicted": "real",
+      "confidence": 0.67,
+      "severity": "medium",
+      "correct": false,
+      "communityforensics": {
+        "fake_prob": 0.4377908408641815,
+        "verdict": "real"
+      },
+      "prithivmlmods": {
+        "fake_prob": 0.28306815028190613,
+        "verdict": "real"
+      }
+    },
+    {
+      "source": "fake_0052",
+      "label": "fake",
+      "predicted": "manipulated",
+      "confidence": 0.71,
+      "severity": "high",
+      "correct": true,
+      "communityforensics": {
+        "fake_prob": 0.3652588427066803,
+        "verdict": "real"
+      },
+      "prithivmlmods": {
+        "fake_prob": 0.3340786397457123,
+        "verdict": "real"
+      }
+    },
+    {
+      "source": "fake_0053",
+      "label": "fake",
+      "predicted": "real",
+      "confidence": 0.71,
+      "severity": "medium",
+      "correct": false,
+      "communityforensics": {
+        "fake_prob": 0.4422517418861389,
+        "verdict": "real"
+      },
+      "prithivmlmods": {
+        "fake_prob": 0.1607125699520111,
+        "verdict": "real"
+      }
+    },
+    {
+      "source": "fake_0054",
+      "label": "fake",
+      "predicted": "manipulated",
+      "confidence": 0.6,
+      "severity": "medium",
+      "correct": true,
+      "communityforensics": {
+        "fake_prob": 0.699144721031189,
+        "verdict": "manipulated"
+      },
+      "prithivmlmods": {
+        "fake_prob": 0.7915612459182739,
+        "verdict": "manipulated"
+      }
+    },
+    {
+      "source": "fake_0055",
+      "label": "fake",
+      "predicted": "real",
+      "confidence": 0.66,
+      "severity": "medium",
+      "correct": false,
+      "communityforensics": {
+        "fake_prob": 0.534683108329773,
+        "verdict": "manipulated"
+      },
+      "prithivmlmods": {
+        "fake_prob": 0.06341543793678284,
+        "verdict": "real"
+      }
+    },
+    {
+      "source": "fake_0056",
+      "label": "fake",
+      "predicted": "manipulated",
+      "confidence": 0.57,
+      "severity": "medium",
+      "correct": true,
+      "communityforensics": {
+        "fake_prob": 0.5778281688690186,
+        "verdict": "manipulated"
+      },
+      "prithivmlmods": {
+        "fake_prob": 0.8238525390625,
+        "verdict": "manipulated"
+      }
+    },
+    {
+      "source": "fake_0057",
+      "label": "fake",
+      "predicted": "manipulated",
+      "confidence": 0.71,
+      "severity": "high",
+      "correct": true,
+      "communityforensics": {
+        "fake_prob": 0.40305981040000916,
+        "verdict": "real"
+      },
+      "prithivmlmods": {
+        "fake_prob": 0.28190377354621887,
+        "verdict": "real"
+      }
+    },
+    {
+      "source": "fake_0058",
+      "label": "fake",
+      "predicted": "real",
+      "confidence": 0.58,
+      "severity": "medium",
+      "correct": false,
+      "communityforensics": {
+        "fake_prob": 0.5673421621322632,
+        "verdict": "manipulated"
+      },
+      "prithivmlmods": {
+        "fake_prob": 0.43180808424949646,
+        "verdict": "real"
+      }
+    },
+    {
+      "source": "fake_0059",
+      "label": "fake",
+      "predicted": "manipulated",
+      "confidence": 0.75,
+      "severity": "high",
+      "correct": true,
+      "communityforensics": {
+        "fake_prob": 0.32744720578193665,
+        "verdict": "real"
+      },
+      "prithivmlmods": {
+        "fake_prob": 0.18115265667438507,
+        "verdict": "real"
+      }
+    },
+    {
+      "source": "fake_0060",
+      "label": "fake",
+      "predicted": "real",
+      "confidence": 0.64,
+      "severity": "medium",
+      "correct": false,
+      "communityforensics": {
+        "fake_prob": 0.44144147634506226,
+        "verdict": "real"
+      },
+      "prithivmlmods": {
+        "fake_prob": 0.3738216161727905,
+        "verdict": "real"
+      }
+    },
+    {
+      "source": "fake_0061",
+      "label": "fake",
+      "predicted": "real",
+      "confidence": 0.71,
+      "severity": "medium",
+      "correct": false,
+      "communityforensics": {
+        "fake_prob": 0.38116633892059326,
+        "verdict": "real"
+      },
+      "prithivmlmods": {
+        "fake_prob": 0.2464199662208557,
+        "verdict": "real"
+      }
+    },
+    {
+      "source": "fake_0062",
+      "label": "fake",
+      "predicted": "manipulated",
+      "confidence": 0.43,
+      "severity": "medium",
+      "correct": true,
+      "communityforensics": {
+        "fake_prob": 0.4121588468551636,
+        "verdict": "real"
+      },
+      "prithivmlmods": {
+        "fake_prob": 0.6030976176261902,
+        "verdict": "manipulated"
+      }
+    },
+    {
+      "source": "fake_0063",
+      "label": "fake",
+      "predicted": "real",
+      "confidence": 0.64,
+      "severity": "medium",
+      "correct": false,
+      "communityforensics": {
+        "fake_prob": 0.5889514088630676,
+        "verdict": "manipulated"
+      },
+      "prithivmlmods": {
+        "fake_prob": 0.2231590896844864,
+        "verdict": "real"
+      }
+    },
+    {
+      "source": "fake_0064",
+      "label": "fake",
+      "predicted": "manipulated",
+      "confidence": 0.47,
+      "severity": "medium",
+      "correct": true,
+      "communityforensics": {
+        "fake_prob": 0.38750600814819336,
+        "verdict": "real"
+      },
+      "prithivmlmods": {
+        "fake_prob": 0.44754043221473694,
+        "verdict": "real"
+      }
+    },
+    {
+      "source": "fake_0065",
+      "label": "fake",
+      "predicted": "manipulated",
+      "confidence": 0.43,
+      "severity": "medium",
+      "correct": true,
+      "communityforensics": {
+        "fake_prob": 0.597903311252594,
+        "verdict": "manipulated"
+      },
+      "prithivmlmods": {
+        "fake_prob": 0.4198630452156067,
+        "verdict": "real"
+      }
+    },
+    {
+      "source": "fake_0066",
+      "label": "fake",
+      "predicted": "real",
+      "confidence": 0.76,
+      "severity": "medium",
+      "correct": false,
+      "communityforensics": {
+        "fake_prob": 0.4035242199897766,
+        "verdict": "real"
+      },
+      "prithivmlmods": {
+        "fake_prob": 0.079083651304245,
+        "verdict": "real"
+      }
+    },
+    {
+      "source": "fake_0067",
+      "label": "fake",
+      "predicted": "real",
+      "confidence": 0.62,
+      "severity": "medium",
+      "correct": false,
+      "communityforensics": {
+        "fake_prob": 0.6294481754302979,
+        "verdict": "manipulated"
+      },
+      "prithivmlmods": {
+        "fake_prob": 0.06792675703763962,
+        "verdict": "real"
+      }
+    },
+    {
+      "source": "fake_0068",
+      "label": "fake",
+      "predicted": "manipulated",
+      "confidence": 0.59,
+      "severity": "medium",
+      "correct": true,
+      "communityforensics": {
+        "fake_prob": 0.6356675028800964,
+        "verdict": "manipulated"
+      },
+      "prithivmlmods": {
+        "fake_prob": 0.8276442289352417,
+        "verdict": "manipulated"
+      }
+    },
+    {
+      "source": "fake_0069",
+      "label": "fake",
+      "predicted": "manipulated",
+      "confidence": 0.74,
+      "severity": "high",
+      "correct": true,
+      "communityforensics": {
+        "fake_prob": 0.42980390787124634,
+        "verdict": "real"
+      },
+      "prithivmlmods": {
+        "fake_prob": 0.09605860710144043,
+        "verdict": "real"
+      }
+    },
+    {
+      "source": "fake_0070",
+      "label": "fake",
+      "predicted": "real",
+      "confidence": 0.68,
+      "severity": "medium",
+      "correct": false,
+      "communityforensics": {
+        "fake_prob": 0.3251931667327881,
+        "verdict": "real"
+      },
+      "prithivmlmods": {
+        "fake_prob": 0.36910733580589294,
+        "verdict": "real"
+      }
+    },
+    {
+      "source": "fake_0071",
+      "label": "fake",
+      "predicted": "manipulated",
+      "confidence": 0.55,
+      "severity": "medium",
+      "correct": true,
+      "communityforensics": {
+        "fake_prob": 0.5211102962493896,
+        "verdict": "manipulated"
+      },
+      "prithivmlmods": {
+        "fake_prob": 0.8262614607810974,
+        "verdict": "manipulated"
+      }
+    },
+    {
+      "source": "fake_0072",
+      "label": "fake",
+      "predicted": "real",
+      "confidence": 0.61,
+      "severity": "medium",
+      "correct": false,
+      "communityforensics": {
+        "fake_prob": 0.642146110534668,
+        "verdict": "manipulated"
+      },
+      "prithivmlmods": {
+        "fake_prob": 0.12594926357269287,
+        "verdict": "real"
+      }
+    },
+    {
+      "source": "fake_0073",
+      "label": "fake",
+      "predicted": "manipulated",
+      "confidence": 0.45,
+      "severity": "medium",
+      "correct": true,
+      "communityforensics": {
+        "fake_prob": 0.5505138039588928,
+        "verdict": "manipulated"
+      },
+      "prithivmlmods": {
+        "fake_prob": 0.5129286646842957,
+        "verdict": "manipulated"
+      }
+    },
+    {
+      "source": "fake_0074",
+      "label": "fake",
+      "predicted": "manipulated",
+      "confidence": 0.46,
+      "severity": "medium",
+      "correct": true,
+      "communityforensics": {
+        "fake_prob": 0.3346730172634125,
+        "verdict": "real"
+      },
+      "prithivmlmods": {
+        "fake_prob": 0.47283080220222473,
+        "verdict": "real"
+      }
+    },
+    {
+      "source": "fake_0075",
+      "label": "fake",
+      "predicted": "real",
+      "confidence": 0.76,
+      "severity": "medium",
+      "correct": false,
+      "communityforensics": {
+        "fake_prob": 0.41361504793167114,
+        "verdict": "real"
+      },
+      "prithivmlmods": {
+        "fake_prob": 0.04458394646644592,
+        "verdict": "real"
+      }
+    },
+    {
+      "source": "fake_0076",
+      "label": "fake",
+      "predicted": "manipulated",
+      "confidence": 0.62,
+      "severity": "medium",
+      "correct": true,
+      "communityforensics": {
+        "fake_prob": 0.7464640140533447,
+        "verdict": "manipulated"
+      },
+      "prithivmlmods": {
+        "fake_prob": 0.8038721084594727,
+        "verdict": "manipulated"
+      }
+    },
+    {
+      "source": "fake_0077",
+      "label": "fake",
+      "predicted": "real",
+      "confidence": 0.58,
+      "severity": "medium",
+      "correct": false,
+      "communityforensics": {
+        "fake_prob": 0.7134957313537598,
+        "verdict": "manipulated"
+      },
+      "prithivmlmods": {
+        "fake_prob": 0.045581307262182236,
+        "verdict": "real"
+      }
+    },
+    {
+      "source": "fake_0078",
+      "label": "fake",
+      "predicted": "manipulated",
+      "confidence": 0.46,
+      "severity": "medium",
+      "correct": true,
+      "communityforensics": {
+        "fake_prob": 0.6703118085861206,
+        "verdict": "manipulated"
+      },
+      "prithivmlmods": {
+        "fake_prob": 0.43073999881744385,
+        "verdict": "real"
+      }
+    },
+    {
+      "source": "fake_0079",
+      "label": "fake",
+      "predicted": "manipulated",
+      "confidence": 0.81,
+      "severity": "high",
+      "correct": true,
+      "communityforensics": {
+        "fake_prob": 0.41724032163619995,
+        "verdict": "real"
+      },
+      "prithivmlmods": {
+        "fake_prob": 0.5110257863998413,
+        "verdict": "manipulated"
+      }
+    },
+    {
+      "source": "fake_0080",
+      "label": "fake",
+      "predicted": "real",
+      "confidence": 0.67,
+      "severity": "medium",
+      "correct": false,
+      "communityforensics": {
+        "fake_prob": 0.4443276822566986,
+        "verdict": "real"
+      },
+      "prithivmlmods": {
+        "fake_prob": 0.27938956022262573,
+        "verdict": "real"
+      }
+    },
+    {
+      "source": "fake_0081",
+      "label": "fake",
+      "predicted": "real",
+      "confidence": 0.66,
+      "severity": "medium",
+      "correct": false,
+      "communityforensics": {
+        "fake_prob": 0.5347795486450195,
+        "verdict": "manipulated"
+      },
+      "prithivmlmods": {
+        "fake_prob": 0.09079620987176895,
+        "verdict": "real"
+      }
+    },
+    {
+      "source": "fake_0082",
+      "label": "fake",
+      "predicted": "manipulated",
+      "confidence": 0.76,
+      "severity": "high",
+      "correct": true,
+      "communityforensics": {
+        "fake_prob": 0.38057467341423035,
+        "verdict": "real"
+      },
+      "prithivmlmods": {
+        "fake_prob": 0.0916486456990242,
+        "verdict": "real"
+      }
+    },
+    {
+      "source": "fake_0083",
+      "label": "fake",
+      "predicted": "manipulated",
+      "confidence": 0.43,
+      "severity": "medium",
+      "correct": true,
+      "communityforensics": {
+        "fake_prob": 0.7321770787239075,
+        "verdict": "manipulated"
+      },
+      "prithivmlmods": {
+        "fake_prob": 0.16358277201652527,
+        "verdict": "real"
+      }
+    },
+    {
+      "source": "fake_0084",
+      "label": "fake",
+      "predicted": "manipulated",
+      "confidence": 0.69,
+      "severity": "medium",
+      "correct": true,
+      "communityforensics": {
+        "fake_prob": 0.37833571434020996,
+        "verdict": "real"
+      },
+      "prithivmlmods": {
+        "fake_prob": 0.44237586855888367,
+        "verdict": "real"
+      }
+    },
+    {
+      "source": "fake_0085",
+      "label": "fake",
+      "predicted": "manipulated",
+      "confidence": 0.72,
+      "severity": "high",
+      "correct": true,
+      "communityforensics": {
+        "fake_prob": 0.40024805068969727,
+        "verdict": "real"
+      },
+      "prithivmlmods": {
+        "fake_prob": 0.2722170948982239,
+        "verdict": "real"
+      }
+    },
+    {
+      "source": "fake_0086",
+      "label": "fake",
+      "predicted": "manipulated",
+      "confidence": 0.67,
+      "severity": "medium",
+      "correct": true,
+      "communityforensics": {
+        "fake_prob": 0.6361123919487,
+        "verdict": "manipulated"
+      },
+      "prithivmlmods": {
+        "fake_prob": 0.1447836309671402,
+        "verdict": "real"
+      }
+    },
+    {
+      "source": "fake_0087",
+      "label": "fake",
+      "predicted": "manipulated",
+      "confidence": 0.52,
+      "severity": "medium",
+      "correct": true,
+      "communityforensics": {
+        "fake_prob": 0.6750522255897522,
+        "verdict": "manipulated"
+      },
+      "prithivmlmods": {
+        "fake_prob": 0.5952044129371643,
+        "verdict": "manipulated"
+      }
+    },
+    {
+      "source": "fake_0088",
+      "label": "fake",
+      "predicted": "manipulated",
+      "confidence": 0.43,
+      "severity": "medium",
+      "correct": true,
+      "communityforensics": {
+        "fake_prob": 0.537024736404419,
+        "verdict": "manipulated"
+      },
+      "prithivmlmods": {
+        "fake_prob": 0.4661518335342407,
+        "verdict": "real"
+      }
+    },
+    {
+      "source": "fake_0089",
+      "label": "fake",
+      "predicted": "real",
+      "confidence": 0.66,
+      "severity": "medium",
+      "correct": false,
+      "communityforensics": {
+        "fake_prob": 0.4215380549430847,
+        "verdict": "real"
+      },
+      "prithivmlmods": {
+        "fake_prob": 0.33612191677093506,
+        "verdict": "real"
+      }
+    },
+    {
+      "source": "fake_0090",
+      "label": "fake",
+      "predicted": "manipulated",
+      "confidence": 0.69,
+      "severity": "medium",
+      "correct": true,
+      "communityforensics": {
+        "fake_prob": 0.5448794960975647,
+        "verdict": "manipulated"
+      },
+      "prithivmlmods": {
+        "fake_prob": 0.25650545954704285,
+        "verdict": "real"
+      }
+    },
+    {
+      "source": "fake_0091",
+      "label": "fake",
+      "predicted": "real",
+      "confidence": 0.68,
+      "severity": "medium",
+      "correct": false,
+      "communityforensics": {
+        "fake_prob": 0.29626232385635376,
+        "verdict": "real"
+      },
+      "prithivmlmods": {
+        "fake_prob": 0.40373334288597107,
+        "verdict": "real"
+      }
+    },
+    {
+      "source": "fake_0092",
+      "label": "fake",
+      "predicted": "real",
+      "confidence": 0.69,
+      "severity": "medium",
+      "correct": false,
+      "communityforensics": {
+        "fake_prob": 0.3955096900463104,
+        "verdict": "real"
+      },
+      "prithivmlmods": {
+        "fake_prob": 0.2758899927139282,
+        "verdict": "real"
+      }
+    },
+    {
+      "source": "fake_0093",
+      "label": "fake",
+      "predicted": "manipulated",
+      "confidence": 0.67,
+      "severity": "medium",
+      "correct": true,
+      "communityforensics": {
+        "fake_prob": 0.4302062392234802,
+        "verdict": "real"
+      },
+      "prithivmlmods": {
+        "fake_prob": 0.4573289155960083,
+        "verdict": "real"
+      }
+    },
+    {
+      "source": "fake_0094",
+      "label": "fake",
+      "predicted": "manipulated",
+      "confidence": 0.57,
+      "severity": "medium",
+      "correct": true,
+      "communityforensics": {
+        "fake_prob": 0.6348572969436646,
+        "verdict": "manipulated"
+      },
+      "prithivmlmods": {
+        "fake_prob": 0.7699093818664551,
+        "verdict": "manipulated"
+      }
+    },
+    {
+      "source": "fake_0095",
+      "label": "fake",
+      "predicted": "manipulated",
+      "confidence": 0.43,
+      "severity": "medium",
+      "correct": true,
+      "communityforensics": {
+        "fake_prob": 0.7242317795753479,
+        "verdict": "manipulated"
+      },
+      "prithivmlmods": {
+        "fake_prob": 0.06010150536894798,
+        "verdict": "real"
+      }
+    },
+    {
+      "source": "fake_0096",
+      "label": "fake",
+      "predicted": "real",
+      "confidence": 0.77,
+      "severity": "medium",
+      "correct": false,
+      "communityforensics": {
+        "fake_prob": 0.38441330194473267,
+        "verdict": "real"
+      },
+      "prithivmlmods": {
+        "fake_prob": 0.06224656477570534,
+        "verdict": "real"
+      }
+    },
+    {
+      "source": "fake_0097",
+      "label": "fake",
+      "predicted": "manipulated",
+      "confidence": 0.59,
+      "severity": "medium",
+      "correct": true,
+      "communityforensics": {
+        "fake_prob": 0.420908659696579,
+        "verdict": "real"
+      },
+      "prithivmlmods": {
+        "fake_prob": 0.6162647604942322,
+        "verdict": "manipulated"
+      }
+    },
+    {
+      "source": "fake_0098",
+      "label": "fake",
+      "predicted": "real",
+      "confidence": 0.6,
+      "severity": "medium",
+      "correct": false,
+      "communityforensics": {
+        "fake_prob": 0.6623131632804871,
+        "verdict": "manipulated"
+      },
+      "prithivmlmods": {
+        "fake_prob": 0.09718850255012512,
+        "verdict": "real"
+      }
+    },
+    {
+      "source": "fake_0099",
+      "label": "fake",
+      "predicted": "real",
+      "confidence": 0.73,
+      "severity": "medium",
+      "correct": false,
+      "communityforensics": {
+        "fake_prob": 0.35480958223342896,
+        "verdict": "real"
+      },
+      "prithivmlmods": {
+        "fake_prob": 0.1967618316411972,
+        "verdict": "real"
+      }
+    }
+  ]
+}

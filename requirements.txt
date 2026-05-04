@@ -1,0 +1,25 @@
+# Web framework
+fastapi>=0.115.0
+uvicorn>=0.34.0
+pydantic>=2.0
+pydantic-settings>=2.0
+python-multipart>=0.0.18
+httpx>=0.28.0
+
+# ML — Audio & Image
+torch>=2.0
+librosa>=0.10
+soundfile>=0.12
+opencv-python-headless>=4.9
+transformers>=4.40
+Pillow>=10.0
+
+# AI Explainer
+anthropic>=0.40.0
+
+# C2PA Provenance (optional — install separately if needed)
+# c2pa-python>=0.5
+
+# Testing
+pytest>=8.0
+pytest-asyncio>=0.24.0

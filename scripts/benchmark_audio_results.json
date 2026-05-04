@@ -1,0 +1,277 @@
+{
+  "dataset": "UniDataPro/real-vs-fake-human-voice-deepfake-audio",
+  "samples": {
+    "real": 14,
+    "fake": 14
+  },
+  "model": "garystafford/wav2vec2-deepfake-voice-detector",
+  "accuracy": 0.5,
+  "precision": 0.5,
+  "recall": 0.5714,
+  "f1": 0.5333,
+  "confusion_matrix": [
+    [
+      6,
+      8
+    ],
+    [
+      6,
+      8
+    ]
+  ],
+  "avg_confidence": 0.8107,
+  "per_clip_details": [
+    {
+      "source": "real_0000",
+      "label": "real",
+      "predicted": "synthetic",
+      "confidence": 0.66,
+      "severity": "medium",
+      "correct": false,
+      "duration": 67.37
+    },
+    {
+      "source": "real_0001",
+      "label": "real",
+      "predicted": "synthetic",
+      "confidence": 0.78,
+      "severity": "medium",
+      "correct": false,
+      "duration": 67.37
+    },
+    {
+      "source": "real_0002",
+      "label": "real",
+      "predicted": "real",
+      "confidence": 0.97,
+      "severity": "medium",
+      "correct": true,
+      "duration": 48.8
+    },
+    {
+      "source": "real_0003",
+      "label": "real",
+      "predicted": "synthetic",
+      "confidence": 0.77,
+      "severity": "medium",
+      "correct": false,
+      "duration": 48.09
+    },
+    {
+      "source": "real_0004",
+      "label": "real",
+      "predicted": "synthetic",
+      "confidence": 0.55,
+      "severity": "medium",
+      "correct": false,
+      "duration": 68.02
+    },
+    {
+      "source": "real_0005",
+      "label": "real",
+      "predicted": "real",
+      "confidence": 1.0,
+      "severity": "medium",
+      "correct": true,
+      "duration": 48.09
+    },
+    {
+      "source": "real_0006",
+      "label": "real",
+      "predicted": "synthetic",
+      "confidence": 0.78,
+      "severity": "medium",
+      "correct": false,
+      "duration": 68.02
+    },
+    {
+      "source": "real_0007",
+      "label": "real",
+      "predicted": "synthetic",
+      "confidence": 0.42,
+      "severity": "low",
+      "correct": false,
+      "duration": 67.32
+    },
+    {
+      "source": "real_0008",
+      "label": "real",
+      "predicted": "synthetic",
+      "confidence": 0.64,
+      "severity": "medium",
+      "correct": false,
+      "duration": 67.37
+    },
+    {
+      "source": "real_0009",
+      "label": "real",
+      "predicted": "synthetic",
+      "confidence": 0.79,
+      "severity": "medium",
+      "correct": false,
+      "duration": 68.02
+    },
+    {
+      "source": "real_0010",
+      "label": "real",
+      "predicted": "real",
+      "confidence": 1.0,
+      "severity": "medium",
+      "correct": true,
+      "duration": 48.8
+    },
+    {
+      "source": "real_0011",
+      "label": "real",
+      "predicted": "real",
+      "confidence": 1.0,
+      "severity": "medium",
+      "correct": true,
+      "duration": 48.76
+    },
+    {
+      "source": "real_0012",
+      "label": "real",
+      "predicted": "real",
+      "confidence": 0.99,
+      "severity": "medium",
+      "correct": true,
+      "duration": 48.09
+    },
+    {
+      "source": "real_0013",
+      "label": "real",
+      "predicted": "real",
+      "confidence": 0.99,
+      "severity": "medium",
+      "correct": true,
+      "duration": 48.8
+    },
+    {
+      "source": "fake_0000",
+      "label": "fake",
+      "predicted": "synthetic",
+      "confidence": 0.7,
+      "severity": "medium",
+      "correct": true,
+      "duration": 48.48
+    },
+    {
+      "source": "fake_0001",
+      "label": "fake",
+      "predicted": "real",
+      "confidence": 0.99,
+      "severity": "medium",
+      "correct": false,
+      "duration": 55.43
+    },
+    {
+      "source": "fake_0002",
+      "label": "fake",
+      "predicted": "synthetic",
+      "confidence": 0.79,
+      "severity": "medium",
+      "correct": true,
+      "duration": 55.41
+    },
+    {
+      "source": "fake_0003",
+      "label": "fake",
+      "predicted": "real",
+      "confidence": 1.0,
+      "severity": "medium",
+      "correct": false,
+      "duration": 55.43
+    },
+    {
+      "source": "fake_0004",
+      "label": "fake",
+      "predicted": "real",
+      "confidence": 1.0,
+      "severity": "medium",
+      "correct": false,
+      "duration": 48.48
+    },
+    {
+      "source": "fake_0005",
+      "label": "fake",
+      "predicted": "synthetic",
+      "confidence": 0.77,
+      "severity": "medium",
+      "correct": true,
+      "duration": 62.35
+    },
+    {
+      "source": "fake_0006",
+      "label": "fake",
+      "predicted": "synthetic",
+      "confidence": 0.72,
+      "severity": "medium",
+      "correct": true,
+      "duration": 62.35
+    },
+    {
+      "source": "fake_0007",
+      "label": "fake",
+      "predicted": "real",
+      "confidence": 1.0,
+      "severity": "medium",
+      "correct": false,
+      "duration": 55.38
+    },
+    {
+      "source": "fake_0008",
+      "label": "fake",
+      "predicted": "synthetic",
+      "confidence": 0.78,
+      "severity": "medium",
+      "correct": true,
+      "duration": 55.41
+    },
+    {
+      "source": "fake_0009",
+      "label": "fake",
+      "predicted": "real",
+      "confidence": 0.99,
+      "severity": "medium",
+      "correct": false,
+      "duration": 48.48
+    },
+    {
+      "source": "fake_0010",
+      "label": "fake",
+      "predicted": "synthetic",
+      "confidence": 0.44,
+      "severity": "low",
+      "correct": true,
+      "duration": 55.41
+    },
+    {
+      "source": "fake_0011",
+      "label": "fake",
+      "predicted": "real",
+      "confidence": 0.91,
+      "severity": "medium",
+      "correct": false,
+      "duration": 55.43
+    },
+    {
+      "source": "fake_0012",
+      "label": "fake",
+      "predicted": "synthetic",
+      "confidence": 0.71,
+      "severity": "medium",
+      "correct": true,
+      "duration": 62.35
+    },
+    {
+      "source": "fake_0013",
+      "label": "fake",
+      "predicted": "synthetic",
+      "confidence": 0.56,
+      "severity": "medium",
+      "correct": true,
+      "duration": 62.28
+    }
+  ]
+}
