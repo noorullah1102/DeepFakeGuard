@@ -5,7 +5,7 @@ WORKDIR /app
 # System deps for audio/image processing
 RUN apt-get update && apt-get install -y --no-install-recommends \
     libsndfile1 \
-    libgl4 \
+    libgl1 \
     libglib2.0-0 \
     && rm -rf /var/lib/apt/lists/*
 
