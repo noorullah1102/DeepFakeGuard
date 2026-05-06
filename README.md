@@ -1,16 +1,3 @@
-<<<<<<< HEAD
-# DeepFakeGuard
-
-**AI-Powered Deepfake Detection Toolkit** — Detect AI-generated voices and manipulated images via a REST API, get plain-English threat explanations powered by Claude, and verify media provenance with C2PA Content Credentials.
-
-![Python 3.12](https://img.shields.io/badge/python-3.12-blue)
-![FastAPI](https://img.shields.io/badge/FastAPI-0.136-green)
-![PyTorch](https://img.shields.io/badge/PyTorch-2.x-orange)
-![License](https://img.shields.io/badge/license-MIT-lightgrey)
-
----
-
-=======
 ---
 title: DeepFakeGuard
 emoji: 🛡️
@@ -31,7 +18,6 @@ pinned: false
 
 ---
 
->>>>>>> a869ab1 (Initial commit)
 ## Features
 
 - **Voice Deepfake Detection** — Upload audio, get a real/synthetic verdict with confidence. Uses Wav2Vec2-Large-XLSR (300M params, 53 languages) trained on modern TTS engines (ElevenLabs, Amazon Polly, Kokoro, Speechify).
@@ -76,7 +62,7 @@ pinned: false
 
 ```bash
 # Clone
-git clone https://github.com/YOUR_USERNAME/DeepFakeGuard.git
+git clone https://github.com/noorullah1102/DeepFakeGuard.git
 cd DeepFakeGuard
 
 # Create virtual environment
@@ -159,26 +145,52 @@ uvicorn app.main:app --reload
 
 ### Image Detection
 
-Tested on `itsLeen/deepfake_vs_real_image_detection` (100 real + 100 fake).
+Tested on [`itsLeen/deepfake_vs_real_image_detection`](https://huggingface.co/datasets/itsLeen/deepfake_vs_real_image_detection) (100 real + 100 fake, seed=42). Script: `scripts/benchmark_image.py`.
 
-| Model | Accuracy | F1 |
-|-------|----------|----|
-| **Full Pipeline** (Ensemble + Rules) | **55.5%** | **0.594** |
-| CommunityForensics ViT alone | 46.5% | 0.462 |
-| prithivMLmods SigLIP alone | 51.0% | 0.364 |
+| Model | Accuracy | Precision | Recall | F1 |
+|-------|----------|-----------|--------|----|
+| **Full Pipeline** (Ensemble + Rules) | **55.5%** | 54.6% | 65.0% | **0.594** |
+| CommunityForensics ViT alone | 46.5% | — | — | 0.462 |
+| prithivMLmods SigLIP alone | 51.0% | — | — | 0.364 |
 
-The ensemble outperforms either model individually, confirming the multi-signal approach compensates for blind spots.
+<details>
+<summary>Key findings</summary>
+
+- The full pipeline **outperforms either model individually** (+9% over ViT, +4.5% over SigLIP), confirming the ensemble + rule-based approach compensates for each model's blind spots.
+- Main weakness is **false positives** (54% of real images flagged as fake), primarily driven by the rule-based system firing on legitimate photos with stripped EXIF or smooth skin.
+- CommunityForensics ViT struggles with images outside its training distribution (non-fake samples it hasn't seen).
+- prithivMLmods SigLIP is trained primarily on diffusion-generated images and misses GAN-generated faces.
+</details>
 
 ### Audio Detection
 
-Tested on `UniDataPro/real-vs-fake-human-voice-deepfake-audio` (14 real + 14 fake).
+Tested on [`UniDataPro/real-vs-fake-human-voice-deepfake-audio`](https://huggingface.co/datasets/UniDataPro/real-vs-fake-human-voice-deepfake-audio) (14 real + 14 fake, seed=42). Script: `scripts/benchmark_audio.py`.
 
 | Metric | Score |
 |--------|-------|
 | Accuracy | 50.0% |
+| Precision | 50.0% |
+| Recall | 57.1% |
 | F1 | 0.533 |
 
-> These are honest numbers on challenging datasets. Deepfake detection is an adversarial arms race — no open-source tool reliably catches everything.
+<details>
+<summary>Key findings</summary>
+
+- Audio detection is near **coin-flip** on this dataset. The Wav2Vec2 model struggles to differentiate real vs fake voices, suggesting the fake voices may use TTS engines not covered by the model's training data.
+- The model was trained on ElevenLabs, Amazon Polly, Kokoro, and Speechify — other TTS engines may produce different artifacts.
+- Room for improvement via threshold tuning, domain-specific fine-tuning, and expanding training data coverage.
+</details>
+
+> **Why share these numbers?** Deepfake detection is an adversarial arms race. No open-source tool reliably catches everything. Being transparent about benchmark performance builds trust and sets realistic expectations. Results are saved to `scripts/benchmark_results.json` and `scripts/benchmark_audio_results.json`.
+
+### Reproduce Benchmarks
+
+```bash
+source venv/bin/activate
+pip install datasets soundfile  # if not installed
+python scripts/benchmark_image.py [--sample N]  # default: 100 per class
+python scripts/benchmark_audio.py [--sample N]  # default: 50 per class
+```
 
 ## Testing
 

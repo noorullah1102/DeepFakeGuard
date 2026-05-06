@@ -4,102 +4,1284 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DeepFakeGuard — Deepfake Detection Toolkit</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="icon" type="image/svg+xml" href="/static/favicon.svg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@300;400;500;600&family=Syne:wght@700;800&display=swap" rel="stylesheet">
     <style>
-        .drop-zone { transition: all 0.2s ease; }
-        .drop-zone.dragover { border-color: #3b82f6; background-color: #1e3a5f; }
-        .verdict-real { color: #22c55e; }
-        .verdict-synthetic, .verdict-manipulated { color: #ef4444; }
-        .confidence-bar { transition: width 0.5s ease; }
-        .fade-in { animation: fadeIn 0.3s ease-in; }
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        /* ── Reset ── */
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        /* ── Tokens ── */
+        :root {
+            --bg: #080c10;
+            --bg-2: #0d1219;
+            --bg-3: #111820;
+            --bg-4: #161f2b;
+            --accent: #00e5c3;
+            --accent-dim: rgba(0,229,195,0.12);
+            --accent-mid: rgba(0,229,195,0.25);
+            --text: #e8edf3;
+            --text-muted: #7a8fa6;
+            --text-dim: #3a4f64;
+            --border: rgba(0,229,195,0.08);
+            --border-hover: rgba(0,229,195,0.22);
+            --danger: #ff4d6a;
+            --warning: #f59e0b;
+            --radius: 10px;
+            --radius-lg: 16px;
+        }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            font-weight: 300;
+            background: var(--bg);
+            color: var(--text);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* ── Grid overlay ── */
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background-image:
+                linear-gradient(rgba(0,229,195,0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0,229,195,0.03) 1px, transparent 1px);
+            background-size: 40px 40px;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        /* ── Radial glow ── */
+        body::after {
+            content: '';
+            position: fixed;
+            top: -200px;
+            right: -200px;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(0,229,195,0.08) 0%, transparent 70%);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        /* ── Navbar ── */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 64px;
+            background: rgba(8,12,16,0.85);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            z-index: 100;
+        }
+        .navbar-inner {
+            max-width: 1100px;
+            width: 100%;
+            margin: 0 auto;
+            padding: 0 40px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+        }
+        .logo-mark {
+            width: 32px;
+            height: 32px;
+            border: 1.5px solid var(--accent);
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Syne', sans-serif;
+            font-weight: 800;
+            font-size: 12px;
+            color: var(--accent);
+        }
+        .logo-text {
+            font-family: 'Syne', sans-serif;
+            font-weight: 700;
+            font-size: 16px;
+            color: var(--text);
+        }
+        .logo-badge {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 10px;
+            background: var(--bg-3);
+            border: 1px solid var(--border);
+            border-radius: 4px;
+            padding: 2px 6px;
+            color: var(--text-muted);
+        }
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            list-style: none;
+        }
+        .nav-links a {
+            font-family: 'Inter', sans-serif;
+            font-weight: 500;
+            font-size: 13px;
+            color: var(--text-muted);
+            text-decoration: none;
+            padding: 6px 12px;
+            border-radius: 6px;
+            transition: all 0.2s ease;
+        }
+        .nav-links a:hover {
+            color: var(--text);
+            background: var(--accent-dim);
+        }
+        .api-link {
+            font-family: 'IBM Plex Mono', monospace !important;
+            font-size: 12px !important;
+            border: 1px solid var(--accent) !important;
+            border-radius: 6px !important;
+            padding: 5px 12px !important;
+            color: var(--accent) !important;
+            transition: all 0.2s ease !important;
+        }
+        .api-link:hover {
+            background: var(--accent) !important;
+            color: var(--bg) !important;
+        }
+
+        /* ── Container ── */
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 40px 80px;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* ── Hero ── */
+        .hero {
+            padding: 140px 0 80px;
+            max-width: 1100px;
+            margin: 0 auto;
+            padding-left: 40px;
+            padding-right: 40px;
+            position: relative;
+            z-index: 1;
+        }
+        .hero-tag {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+        .hero-tag-line {
+            width: 20px;
+            height: 2px;
+            background: var(--accent);
+        }
+        .hero-tag span {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 11px;
+            letter-spacing: 0.15em;
+            color: var(--accent);
+            text-transform: uppercase;
+        }
+        .hero h1 {
+            font-family: 'Syne', sans-serif;
+            font-weight: 800;
+            font-size: clamp(42px, 7vw, 72px);
+            letter-spacing: -0.03em;
+            line-height: 1.05;
+            color: var(--text);
+            margin-bottom: 20px;
+        }
+        .hero h1 em {
+            font-style: normal;
+            color: var(--accent);
+        }
+        .hero-sub {
+            font-weight: 300;
+            font-size: 17px;
+            color: var(--text-muted);
+            max-width: 520px;
+            line-height: 1.65;
+            margin-bottom: 32px;
+        }
+        .hero-stats {
+            display: flex;
+            align-items: center;
+            gap: 32px;
+        }
+        .hero-stat {
+            display: flex;
+            flex-direction: column;
+        }
+        .hero-stat-value {
+            font-family: 'Syne', sans-serif;
+            font-weight: 700;
+            font-size: 28px;
+            color: var(--text);
+        }
+        .hero-stat-value .accent-char {
+            color: var(--accent);
+        }
+        .hero-stat-label {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 11px;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            margin-top: 4px;
+        }
+        .hero-stat-divider {
+            width: 1px;
+            height: 40px;
+            background: var(--border-hover);
+        }
+
+        /* ── Section Label ── */
+        .section-label {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+        .section-label span {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 10px;
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+        }
+        .section-label::after {
+            content: '';
+            width: 24px;
+            height: 1px;
+            background: var(--accent);
+        }
+
+        /* ── Cards ── */
+        .card {
+            background: var(--bg-2);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
+            padding: 28px;
+            transition: border-color 0.2s ease, box-shadow 0.2s ease;
+        }
+        .card:hover {
+            border-color: var(--border-hover);
+            box-shadow: 0 0 30px rgba(0,229,195,0.04);
+        }
+
+        /* ── Detect Grid ── */
+        .detect-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+
+        /* ── Card Header ── */
+        .card-header {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+        .card-header-left {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .card-icon {
+            width: 36px;
+            height: 36px;
+            background: var(--accent-dim);
+            border: 1px solid rgba(0,229,195,0.15);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            color: var(--accent);
+        }
+        .card-title {
+            font-family: 'Syne', sans-serif;
+            font-weight: 700;
+            font-size: 16px;
+            color: var(--text);
+        }
+        .card-subtitle {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 12px;
+            color: var(--text-muted);
+            margin-top: 2px;
+        }
+        .live-badge {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 11px;
+            color: var(--accent);
+            background: var(--accent-dim);
+            border: 1px solid rgba(0,229,195,0.15);
+            border-radius: 4px;
+            padding: 3px 8px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .live-dot {
+            width: 6px;
+            height: 6px;
+            background: var(--accent);
+            border-radius: 50%;
+            animation: pulse-dot 2s ease infinite;
+        }
+        @keyframes pulse-dot {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.4; }
+        }
+
+        /* ── Drop Zone ── */
+        .drop-zone {
+            border: 2px dashed rgba(0,229,195,0.2);
+            background: rgba(0,229,195,0.02);
+            border-radius: var(--radius);
+            padding: 32px 20px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            position: relative;
+        }
+        .drop-zone:hover {
+            border-color: rgba(0,229,195,0.35);
+        }
+        .drop-zone.dragover {
+            border-color: rgba(0,229,195,0.5);
+            background: rgba(0,229,195,0.05);
+        }
+        .drop-zone-icon {
+            width: 40px;
+            height: 40px;
+            background: var(--bg-3);
+            border: 1px solid rgba(0,229,195,0.12);
+            border-radius: 8px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            margin-bottom: 10px;
+            color: var(--text-muted);
+        }
+        .drop-zone-text {
+            font-size: 14px;
+            color: var(--text-muted);
+            margin-bottom: 4px;
+        }
+        .drop-zone-text strong {
+            color: var(--accent);
+            text-decoration: underline;
+            text-underline-offset: 2px;
+        }
+        .drop-zone-formats {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 11px;
+            color: var(--text-dim);
+        }
+        .drop-zone input[type="file"] {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            cursor: pointer;
+        }
+
+        /* ── File Preview ── */
+        .file-preview {
+            background: var(--bg-3);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 10px 14px;
+            display: none;
+            align-items: center;
+            gap: 10px;
+            margin-top: 12px;
+        }
+        .file-preview.active {
+            display: flex;
+        }
+        .file-preview-icon {
+            color: var(--text-muted);
+            font-size: 16px;
+        }
+        .file-preview-name {
+            font-weight: 500;
+            font-size: 13px;
+            color: var(--text);
+            flex: 1;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+        .file-preview-size {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 11px;
+            color: var(--text-muted);
+        }
+        .file-preview-remove {
+            background: none;
+            border: none;
+            color: var(--text-dim);
+            font-size: 16px;
+            cursor: pointer;
+            padding: 2px 6px;
+            transition: color 0.2s;
+        }
+        .file-preview-remove:hover {
+            color: var(--danger);
+        }
+
+        /* ── Analyse Button ── */
+        .analyse-btn {
+            width: 100%;
+            margin-top: 16px;
+            padding: 12px;
+            background: var(--accent);
+            color: var(--bg);
+            border: none;
+            border-radius: var(--radius);
+            font-family: 'Syne', sans-serif;
+            font-weight: 700;
+            font-size: 14px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            transition: all 0.2s ease;
+        }
+        .analyse-btn:hover:not(:disabled) {
+            transform: translateY(-1px);
+            box-shadow: 0 8px 24px rgba(0,229,195,0.25);
+        }
+        .analyse-btn:active:not(:disabled) {
+            transform: translateY(0);
+        }
+        .analyse-btn:disabled {
+            opacity: 0.4;
+            cursor: not-allowed;
+        }
+        .analyse-btn svg {
+            width: 16px;
+            height: 16px;
+        }
+
+        /* ── Result Panel ── */
+        .result-panel {
+            position: relative;
+            margin-bottom: 20px;
+        }
+
+        /* Empty state */
+        .result-empty {
+            text-align: center;
+            padding: 48px 20px;
+        }
+        .result-empty-icon {
+            font-size: 32px;
+            opacity: 0.4;
+            margin-bottom: 12px;
+        }
+        .result-empty-text {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 13px;
+            color: var(--text-dim);
+        }
+
+        /* Loading overlay */
+        .loading-overlay {
+            position: absolute;
+            inset: 0;
+            background: rgba(8,12,16,0.8);
+            backdrop-filter: blur(4px);
+            -webkit-backdrop-filter: blur(4px);
+            border-radius: var(--radius-lg);
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 16px;
+            z-index: 10;
+        }
+        .loading-overlay.active {
+            display: flex;
+        }
+        .spinner {
+            width: 36px;
+            height: 36px;
+            border: 2px solid var(--border);
+            border-top-color: var(--accent);
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+        }
+        @keyframes spin { to { transform: rotate(360deg); } }
+        .loading-label {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 12px;
+            color: var(--accent);
+        }
+
+        /* Verdict block */
+        .verdict-block {
+            border-radius: var(--radius);
+            padding: 16px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+        .verdict-block.real {
+            background: rgba(0,229,195,0.08);
+            border: 1px solid rgba(0,229,195,0.2);
+        }
+        .verdict-block.fake {
+            background: rgba(255,77,106,0.08);
+            border: 1px solid rgba(255,77,106,0.2);
+        }
+        .verdict-left {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .verdict-emoji {
+            font-size: 24px;
+        }
+        .verdict-info {
+            display: flex;
+            flex-direction: column;
+        }
+        .verdict-label {
+            font-family: 'Syne', sans-serif;
+            font-weight: 800;
+            font-size: 18px;
+        }
+        .verdict-label.real { color: var(--accent); }
+        .verdict-label.fake { color: var(--danger); }
+        .verdict-desc {
+            font-size: 12px;
+            color: var(--text-muted);
+            margin-top: 2px;
+        }
+        .verdict-confidence {
+            font-family: 'Syne', sans-serif;
+            font-weight: 800;
+            font-size: 32px;
+        }
+        .verdict-confidence.real { color: var(--accent); }
+        .verdict-confidence.fake { color: var(--danger); }
+
+        /* Confidence bar */
+        .confidence-bar-track {
+            width: 100%;
+            height: 6px;
+            background: var(--bg-4);
+            border-radius: 3px;
+            margin-bottom: 20px;
+            overflow: hidden;
+        }
+        .confidence-bar-fill {
+            height: 100%;
+            border-radius: 3px;
+            width: 0;
+            transition: width 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .confidence-bar-fill.real { background: var(--accent); }
+        .confidence-bar-fill.fake { background: var(--danger); }
+
+        /* Detail grid */
+        .detail-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+        .detail-cell {
+            background: var(--bg-3);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 14px;
+        }
+        .detail-label {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 10px;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--text-dim);
+            margin-bottom: 6px;
+        }
+        .detail-value {
+            font-family: 'Syne', sans-serif;
+            font-weight: 700;
+            font-size: 17px;
+            color: var(--text);
+        }
+        .detail-value.severity-low { color: var(--accent); }
+        .detail-value.severity-medium { color: var(--warning); }
+        .detail-value.severity-high { color: var(--danger); }
+        .detail-value.severity-critical { color: var(--danger); }
+
+        /* Explanation */
+        .explanation-block {
+            background: var(--bg-3);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 16px;
+            margin-bottom: 16px;
+        }
+        .explanation-title {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 10px;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--text-dim);
+            margin-bottom: 8px;
+        }
+        .explanation-text {
+            font-size: 14px;
+            line-height: 1.6;
+            color: var(--text-muted);
+        }
+
+        /* Meta row */
+        .meta-row {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 11px;
+            color: var(--text-dim);
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        /* ── History Table ── */
+        .history-card {
+            overflow: hidden;
+        }
+        .history-header {
+            padding: 20px 24px;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .history-title {
+            font-family: 'Syne', sans-serif;
+            font-weight: 700;
+            font-size: 15px;
+        }
+        .history-count {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 12px;
+            color: var(--text-muted);
+            background: var(--bg-3);
+            padding: 3px 10px;
+            border-radius: 4px;
+        }
+        .history-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        .history-table thead th {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 10px;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            color: var(--text-dim);
+            background: var(--bg-3);
+            padding: 12px 16px;
+            text-align: left;
+        }
+        .history-table tbody tr {
+            border-bottom: 1px solid var(--border);
+            transition: background 0.15s ease;
+        }
+        .history-table tbody tr:hover {
+            background: rgba(0,229,195,0.02);
+        }
+        .history-table tbody td {
+            padding: 12px 16px;
+            font-size: 13px;
+        }
+        .td-time {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 11px;
+            color: var(--text-dim);
+        }
+        .td-file {
+            font-weight: 500;
+            color: var(--text);
+        }
+        .badge {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 10px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            padding: 3px 8px;
+            border-radius: 4px;
+            display: inline-block;
+        }
+        .badge-audio {
+            background: rgba(139,92,246,0.12);
+            color: #a78bfa;
+            border: 1px solid rgba(139,92,246,0.2);
+        }
+        .badge-image {
+            background: rgba(245,158,11,0.12);
+            color: #fbbf24;
+            border: 1px solid rgba(245,158,11,0.2);
+        }
+        .badge-real {
+            background: rgba(0,229,195,0.1);
+            color: var(--accent);
+            border: 1px solid rgba(0,229,195,0.2);
+        }
+        .badge-fake {
+            background: rgba(255,77,106,0.1);
+            color: var(--danger);
+            border: 1px solid rgba(255,77,106,0.2);
+        }
+        .badge-sev-low {
+            background: rgba(0,229,195,0.1);
+            color: var(--accent);
+        }
+        .badge-sev-medium {
+            background: rgba(245,158,11,0.1);
+            color: var(--warning);
+        }
+        .badge-sev-high {
+            background: rgba(255,77,106,0.1);
+            color: var(--danger);
+        }
+        .badge-sev-critical {
+            background: rgba(255,77,106,0.1);
+            color: var(--danger);
+        }
+        .td-conf {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 12px;
+        }
+        .td-conf.real { color: var(--accent); }
+        .td-conf.fake { color: var(--danger); }
+        .empty-history {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 13px;
+            color: var(--text-dim);
+            text-align: center;
+            padding: 32px 16px;
+        }
+
+        /* ── Footer ── */
+        .footer {
+            border-top: 1px solid var(--border);
+            padding: 24px 0;
+            text-align: center;
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 12px;
+            color: var(--text-dim);
+            position: relative;
+            z-index: 1;
+        }
+        .footer a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+        .footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* ── Animations ── */
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .fade-up {
+            opacity: 0;
+            animation: fadeUp 0.6s ease forwards;
+        }
+        .fade-up-1 { animation-delay: 0s; }
+        .fade-up-2 { animation-delay: 0.1s; }
+        .fade-up-3 { animation-delay: 0.2s; }
+        .fade-up-4 { animation-delay: 0.3s; }
+
+        /* ── About Section ── */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+        .about-card-full {
+            grid-column: 1 / -1;
+        }
+        .profile-row {
+            display: flex;
+            gap: 24px;
+            align-items: flex-start;
+        }
+        .profile-avatar {
+            width: 72px;
+            height: 72px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--accent), #00b89c);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+        .profile-avatar span {
+            font-family: 'Syne', sans-serif;
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--bg);
+        }
+        .profile-name {
+            font-family: 'Syne', sans-serif;
+            font-weight: 700;
+            font-size: 20px;
+            color: var(--text);
+            margin-bottom: 2px;
+        }
+        .profile-role {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 12px;
+            color: var(--text-muted);
+            margin-bottom: 12px;
+        }
+        .profile-bio {
+            font-size: 14px;
+            color: var(--text-muted);
+            line-height: 1.7;
+        }
+        .social-links {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-top: 16px;
+        }
+        .social-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 16px;
+            border-radius: 8px;
+            font-size: 13px;
+            text-decoration: none;
+            color: var(--text);
+            border: 1px solid var(--border);
+            transition: all 0.2s ease;
+            background: var(--bg-3);
+        }
+        .social-link:hover {
+            border-color: var(--border-hover);
+            background: var(--bg-4);
+        }
+        .social-link svg {
+            width: 16px;
+            height: 16px;
+            fill: currentColor;
+        }
+        .about-card h2 {
+            font-family: 'Syne', sans-serif;
+            font-weight: 700;
+            font-size: 17px;
+            color: var(--text);
+            margin-bottom: 14px;
+        }
+        .about-card p {
+            font-size: 14px;
+            color: var(--text-muted);
+            line-height: 1.7;
+        }
+        .about-card p em {
+            color: var(--accent);
+            font-style: normal;
+        }
+        .step-list {
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+        }
+        .step-item {
+            display: flex;
+            gap: 14px;
+            align-items: flex-start;
+        }
+        .step-num {
+            width: 30px;
+            height: 30px;
+            border-radius: 8px;
+            background: var(--accent-dim);
+            border: 1px solid rgba(0,229,195,0.15);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--accent);
+        }
+        .step-title {
+            font-weight: 500;
+            font-size: 14px;
+            color: var(--text);
+            margin-bottom: 4px;
+        }
+        .step-desc {
+            font-size: 13px;
+            color: var(--text-muted);
+            line-height: 1.5;
+        }
+        .tech-tags {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+        .tech-tag {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 12px;
+            padding: 5px 12px;
+            border-radius: 6px;
+            background: var(--bg-3);
+            color: var(--text-muted);
+            border: 1px solid var(--border);
+        }
+        .about-link-row {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-top: 12px;
+        }
+
+        /* ── Responsive ── */
+        @media (max-width: 768px) {
+            .navbar-inner { padding: 0 20px; }
+            .hero { padding: 120px 20px 60px; }
+            .container { padding: 0 20px 80px; }
+            .detect-grid { grid-template-columns: 1fr; }
+            .hero-stats { flex-wrap: wrap; gap: 20px; }
+            .detail-grid { grid-template-columns: 1fr; }
+            .about-grid { grid-template-columns: 1fr; }
+            .profile-row { flex-direction: column; align-items: center; text-align: center; }
+            .col-confidence { display: none; }
+            .nav-links { gap: 4px; }
+            .nav-links a { padding: 4px 8px; font-size: 12px; }
+        }
     </style>
 </head>
-<body class="bg-gray-950 text-gray-100 min-h-screen">
+<body>
 
-    <!-- Header -->
-    <header class="border-b border-gray-800 bg-gray-950/80 backdrop-blur sticky top-0 z-10">
-        <div class="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between">
-            <div class="flex items-center gap-3">
-                <div class="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center font-bold text-sm">DG</div>
-                <h1 class="text-xl font-bold">DeepFakeGuard</h1>
-                <span class="text-xs bg-gray-800 px-2 py-0.5 rounded text-gray-400">v1.0</span>
-            </div>
-            <nav class="flex gap-4 text-sm">
-                <a href="#detect" class="text-gray-300 hover:text-white">Detect</a>
-                <a href="#history" class="text-gray-300 hover:text-white">History</a>
-                <a href="/docs" target="_blank" class="text-gray-300 hover:text-white">API Docs</a>
-            </nav>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="navbar-inner">
+            <a href="/" class="logo">
+                <div class="logo-mark">DG</div>
+                <span class="logo-text">DeepFakeGuard</span>
+                <span class="logo-badge">v1.0</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="#detect">Detect</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="/docs" target="_blank" class="api-link">API Docs &nearr;</a></li>
+            </ul>
         </div>
-    </header>
+    </nav>
 
-    <main class="max-w-6xl mx-auto px-4 py-8">
+    <!-- Hero -->
+    <section class="hero fade-up fade-up-1">
+        <div class="hero-tag">
+            <div class="hero-tag-line"></div>
+            <span>AI-Powered Detection</span>
+        </div>
+        <h1>Spot what's <em>not real.</em></h1>
+        <p class="hero-sub">Detect AI-generated voices, manipulated images, and deepfake media with enterprise-grade ML models &mdash; right from your browser.</p>
+        <div class="hero-stats">
+            <div class="hero-stat">
+                <span class="hero-stat-value"><span class="accent-char">3</span></span>
+                <span class="hero-stat-label">ML Models</span>
+            </div>
+            <div class="hero-stat-divider"></div>
+            <div class="hero-stat">
+                <span class="hero-stat-value"><span class="accent-char">2</span></span>
+                <span class="hero-stat-label">Modalities</span>
+            </div>
+            <div class="hero-stat-divider"></div>
+            <div class="hero-stat">
+                <span class="hero-stat-value">Dual<span class="accent-char">+</span></span>
+                <span class="hero-stat-label">Ensemble</span>
+            </div>
+        </div>
+    </section>
 
-        <!-- Upload Section -->
-        <section id="detect" class="mb-12">
-            <h2 class="text-2xl font-bold mb-6">Detect Deepfakes</h2>
+    <div class="container">
 
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <!-- Audio Upload -->
-                <div class="bg-gray-900 rounded-xl border border-gray-800 p-6">
-                    <h3 class="text-lg font-semibold mb-2 flex items-center gap-2">
-                        <span class="text-2xl">&#127908;</span> Audio Detection
-                    </h3>
-                    <p class="text-sm text-gray-400 mb-4">Upload audio to detect AI-generated voices, voice cloning, or TTS.</p>
-                    <div id="audio-drop" class="drop-zone border-2 border-dashed border-gray-700 rounded-lg p-8 text-center cursor-pointer hover:border-gray-500">
-                        <p class="text-gray-400">Drop audio file here or click to browse</p>
-                        <p class="text-xs text-gray-600 mt-2">.wav, .mp3, .flac — Max 50MB</p>
-                        <input type="file" id="audio-input" accept=".wav,.mp3,.flac" class="hidden">
+        <!-- Detection -->
+        <section id="detect" class="fade-up fade-up-2" style="margin-bottom: 20px;">
+            <div class="section-label"><span>01 &mdash; Detection</span></div>
+            <div class="detect-grid">
+
+                <!-- Audio Card -->
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-header-left">
+                            <div class="card-icon">&#127908;</div>
+                            <div>
+                                <div class="card-title">Audio Detection</div>
+                                <div class="card-subtitle">AI voice &amp; TTS detection</div>
+                            </div>
+                        </div>
+                        <div class="live-badge"><span class="live-dot"></span>live</div>
                     </div>
-                    <div id="audio-status" class="mt-3 text-sm hidden"></div>
+                    <div class="drop-zone" id="audio-drop">
+                        <div class="drop-zone-icon">&#128266;</div>
+                        <div class="drop-zone-text">Drop file here or <strong>browse</strong></div>
+                        <div class="drop-zone-formats">.wav, .mp3, .flac &mdash; Max 50MB</div>
+                        <input type="file" id="audio-input" accept=".wav,.mp3,.flac">
+                    </div>
+                    <div class="file-preview" id="audio-preview">
+                        <span class="file-preview-icon">&#127925;</span>
+                        <span class="file-preview-name" id="audio-filename"></span>
+                        <span class="file-preview-size" id="audio-filesize"></span>
+                        <button class="file-preview-remove" id="audio-remove">&times;</button>
+                    </div>
+                    <button class="analyse-btn" id="audio-analyse" disabled>
+                        Analyse
+                        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+                    </button>
                 </div>
 
-                <!-- Image Upload -->
-                <div class="bg-gray-900 rounded-xl border border-gray-800 p-6">
-                    <h3 class="text-lg font-semibold mb-2 flex items-center gap-2">
-                        <span class="text-2xl;&#127912;">&#127912;</span> Image Detection
-                    </h3>
-                    <p class="text-sm text-gray-400 mb-4">Upload an image to detect GAN artifacts, AI generation, or manipulation.</p>
-                    <div id="image-drop" class="drop-zone border-2 border-dashed border-gray-700 rounded-lg p-8 text-center cursor-pointer hover:border-gray-500">
-                        <p class="text-gray-400">Drop image file here or click to browse</p>
-                        <p class="text-xs text-gray-600 mt-2">.jpg, .png, .webp — Max 20MB</p>
-                        <input type="file" id="image-input" accept=".jpg,.jpeg,.png,.webp" class="hidden">
+                <!-- Image Card -->
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-header-left">
+                            <div class="card-icon">&#127912;</div>
+                            <div>
+                                <div class="card-title">Image Detection</div>
+                                <div class="card-subtitle">GAN &amp; diffusion detection</div>
+                            </div>
+                        </div>
+                        <div class="live-badge"><span class="live-dot"></span>live</div>
                     </div>
-                    <div id="image-status" class="mt-3 text-sm hidden"></div>
+                    <div class="drop-zone" id="image-drop">
+                        <div class="drop-zone-icon">&#128247;</div>
+                        <div class="drop-zone-text">Drop file here or <strong>browse</strong></div>
+                        <div class="drop-zone-formats">.jpg, .png, .webp &mdash; Max 20MB</div>
+                        <input type="file" id="image-input" accept=".jpg,.jpeg,.png,.webp">
+                    </div>
+                    <div class="file-preview" id="image-preview">
+                        <span class="file-preview-icon">&#128444;</span>
+                        <span class="file-preview-name" id="image-filename"></span>
+                        <span class="file-preview-size" id="image-filesize"></span>
+                        <button class="file-preview-remove" id="image-remove">&times;</button>
+                    </div>
+                    <button class="analyse-btn" id="image-analyse" disabled>
+                        Analyse
+                        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+                    </button>
                 </div>
+
             </div>
         </section>
 
-        <!-- Results Section -->
-        <section id="results" class="mb-12 hidden">
-            <h2 class="text-2xl font-bold mb-6">Detection Result</h2>
-            <div id="result-card" class="bg-gray-900 rounded-xl border border-gray-800 p-6 fade-in">
-                <!-- Populated by JS -->
+        <!-- Result Panel -->
+        <section id="results" class="fade-up fade-up-3" style="margin-bottom: 20px;">
+            <div class="section-label"><span>02 &mdash; Result</span></div>
+            <div class="card result-panel" id="result-card">
+                <!-- Empty state -->
+                <div class="result-empty" id="result-empty">
+                    <div class="result-empty-icon">&#128269;</div>
+                    <div class="result-empty-text">Upload a file and run detection to see results here</div>
+                </div>
+                <!-- Result content (hidden) -->
+                <div id="result-content" style="display:none;"></div>
+                <!-- Loading overlay -->
+                <div class="loading-overlay" id="loading-overlay">
+                    <div class="spinner"></div>
+                    <div class="loading-label">Analyzing file...</div>
+                </div>
             </div>
         </section>
 
         <!-- Scan History -->
-        <section id="history" class="mb-12">
-            <h2 class="text-2xl font-bold mb-6">Scan History</h2>
-            <div class="bg-gray-900 rounded-xl border border-gray-800 overflow-hidden">
-                <table class="w-full text-sm">
-                    <thead class="bg-gray-800 text-gray-400">
+        <section id="history" class="fade-up fade-up-4">
+            <div class="section-label"><span>03 &mdash; Scan History</span></div>
+            <div class="card history-card">
+                <div class="history-header">
+                    <span class="history-title">Recent scans</span>
+                    <span class="history-count" id="history-count">0 scans</span>
+                </div>
+                <table class="history-table">
+                    <thead>
                         <tr>
-                            <th class="px-4 py-3 text-left">Time</th>
-                            <th class="px-4 py-3 text-left">File</th>
-                            <th class="px-4 py-3 text-left">Type</th>
-                            <th class="px-4 py-3 text-left">Verdict</th>
-                            <th class="px-4 py-3 text-left">Confidence</th>
-                            <th class="px-4 py-3 text-left">Severity</th>
+                            <th>Time</th>
+                            <th>File</th>
+                            <th>Type</th>
+                            <th>Verdict</th>
+                            <th class="col-confidence">Confidence</th>
+                            <th>Severity</th>
                         </tr>
                     </thead>
-                    <tbody id="history-body" class="divide-y divide-gray-800">
-                        <tr><td colspan="6" class="px-4 py-8 text-center text-gray-500">No scans yet</td></tr>
+                    <tbody id="history-body">
+                        <tr><td colspan="6" class="empty-history">&mdash; no scans yet &mdash;</td></tr>
                     </tbody>
                 </table>
             </div>
         </section>
-    </main>
+
+        <!-- About -->
+        <section id="about" class="fade-up" style="margin-top: 40px; margin-bottom: 40px;">
+            <div class="section-label"><span>04 &mdash; About</span></div>
+            <div class="about-grid">
+
+                <!-- Who Built This -->
+                <div class="card about-card about-card-full">
+                    <h2>Who Built This</h2>
+                    <div class="profile-row">
+                        <div class="profile-avatar"><span>N</span></div>
+                        <div>
+                            <div class="profile-name">Noorullah</div>
+                            <div class="profile-role">Cybersecurity Professional</div>
+                            <p class="profile-bio">
+                                I'm a cybersecurity professional passionate about building tools that make the internet safer.
+                                DeepFakeGuard was built to demonstrate how machine learning and AI can work together to detect
+                                deepfake media and make threat intelligence accessible to everyone &mdash; not just technical teams.
+                            </p>
+                            <div class="social-links">
+                                <a href="https://github.com/noorullah1102" target="_blank" class="social-link">
+                                    <svg viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+                                    GitHub
+                                </a>
+                                <a href="https://linkedin.com/in/noorullah1102" target="_blank" class="social-link">
+                                    <svg viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+                                    LinkedIn
+                                </a>
+                                <a href="https://phishradar.noorullah.net" target="_blank" class="social-link">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                                    PhishRadar
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- What is DeepFakeGuard -->
+                <div class="card about-card">
+                    <h2>What is DeepFakeGuard?</h2>
+                    <p>
+                        Traditional deepfake detectors give you a simple "real" or "fake" verdict. DeepFakeGuard goes further
+                        &mdash; it explains <em>why</em> media might be AI-generated using Claude AI, making threat intelligence
+                        accessible to non-technical teams and security analysts.
+                    </p>
+                </div>
+
+                <!-- How It Works -->
+                <div class="card about-card">
+                    <h2>How It Works</h2>
+                    <div class="step-list">
+                        <div class="step-item">
+                            <div class="step-num">1</div>
+                            <div>
+                                <div class="step-title">File Upload &amp; Validation</div>
+                                <div class="step-desc">Audio or image is uploaded and validated for supported formats.</div>
+                            </div>
+                        </div>
+                        <div class="step-item">
+                            <div class="step-num">2</div>
+                            <div>
+                                <div class="step-title">ML Ensemble + Rule-Based Analysis</div>
+                                <div class="step-desc">Dual ML models (CommunityForensics ViT + prithivMLmods SigLIP) combine with OpenCV feature extraction for a weighted verdict.</div>
+                            </div>
+                        </div>
+                        <div class="step-item">
+                            <div class="step-num">3</div>
+                            <div>
+                                <div class="step-title">AI-Powered Explanation</div>
+                                <div class="step-desc">Claude AI generates a plain-English explanation of the threat, including severity and recommended action.</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tech Stack -->
+                <div class="card about-card">
+                    <h2>Tech Stack</h2>
+                    <div class="tech-tags">
+                        <span class="tech-tag">Python 3.12</span>
+                        <span class="tech-tag">FastAPI</span>
+                        <span class="tech-tag">PyTorch</span>
+                        <span class="tech-tag">HuggingFace</span>
+                        <span class="tech-tag">Wav2Vec2</span>
+                        <span class="tech-tag">OpenCV</span>
+                        <span class="tech-tag">Claude API</span>
+                        <span class="tech-tag">Librosa</span>
+                        <span class="tech-tag">SQLite</span>
+                    </div>
+                </div>
+
+                <!-- For Developers -->
+                <div class="card about-card">
+                    <h2>For Developers</h2>
+                    <p>DeepFakeGuard exposes a REST API for programmatic deepfake detection. Check out the interactive docs:</p>
+                    <div class="about-link-row">
+                        <a href="/docs" class="social-link" style="font-size:12px;">
+                            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 2h12v12H2z"/><path d="M5 5h6M5 8h6M5 11h4"/></svg>
+                            Swagger UI
+                        </a>
+                        <a href="/redoc" class="social-link" style="font-size:12px;">
+                            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 2h12v12H2z"/><path d="M5 5h6M5 8h6M5 11h4"/></svg>
+                            ReDoc
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Source Code -->
+                <div class="card about-card">
+                    <h2>Source Code</h2>
+                    <p>This is an open-source portfolio project. Feel free to explore the code, suggest improvements, or use it as a reference.</p>
+                    <div class="about-link-row">
+                        <a href="https://github.com/noorullah1102/DeepFakeGuard#benchmark-results" target="_blank" class="social-link" style="font-size:12px;">
+                            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 2h12v12H2z"/><path d="M5 7h6M5 9.5h4"/></svg>
+                            View Benchmarks
+                        </a>
+                        <a href="https://github.com/noorullah1102/DeepFakeGuard" target="_blank" class="social-link" style="border-color:var(--accent);color:var(--accent);">
+                            <svg viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+                            View on GitHub
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div style="max-width:1100px;margin:0 auto;padding:0 40px;">
+            Built with &#9829; &mdash; <a href="/docs">API Docs</a> &middot; <a href="https://github.com/noorullah1102/DeepFakeGuard" target="_blank">GitHub</a> &middot; <a href="https://phishradar.noorullah.net" target="_blank">PhishRadar</a>
+        </div>
+    </footer>
 
     <script src="/static/js/app.js"></script>
 </body>
